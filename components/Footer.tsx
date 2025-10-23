@@ -12,8 +12,8 @@ export default function Footer() {
       { name: 'Guarantee', href: '#guarantee' },
     ],
     legal: [
-      { name: 'Terms', href: '#' },
-      { name: 'Privacy', href: '#' },
+      { name: 'Terms and Conditions', href: '#' },
+      { name: 'Privacy Policy', href: '#' },
     ],
   }
 
@@ -39,8 +39,8 @@ export default function Footer() {
             <a
               key={social.name}
               href={social.href}
-              className="w-12 h-12 flex items-center justify-center border border-[#544629] rounded-full hover:bg-[#b38d38] hover:text-[#0c0a05] hover:border-[#b38d38] transition-all backdrop-blur-sm"
-              style={{ backgroundColor: 'rgba(84, 70, 41, 0.1)' }}
+              className="w-12 h-12 flex items-center justify-center border border-[#b38d38]/40 rounded-full text-[#b38d38] hover:bg-[#b38d38] hover:text-[#0c0a05] hover:border-[#b38d38] hover:shadow-lg hover:shadow-[#b38d38]/30 hover:scale-110 transition-all backdrop-blur-sm"
+              style={{ backgroundColor: 'rgba(179, 141, 56, 0.15)' }}
               aria-label={social.name}
             >
               <social.icon className="w-5 h-5" />

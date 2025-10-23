@@ -6,7 +6,7 @@ import { ShimmerButton } from './ui/shimmer-button'
 
 export default function MoneyBackGuarantee() {
   return (
-    <section className="py-20 md:py-32 border-y relative overflow-hidden" style={{ backgroundColor: '#0c0a05', borderColor: '#544629' }}>
+    <section id="guarantee" className="py-20 md:py-32 border-y relative overflow-hidden" style={{ backgroundColor: '#0c0a05', borderColor: '#544629' }}>
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

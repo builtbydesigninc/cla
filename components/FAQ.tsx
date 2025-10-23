@@ -42,9 +42,6 @@ export default function FAQ() {
             <h2 className="text-5xl md:text-6xl font-light text-white mb-4">
               Frequently Asked <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">Questions</span>
             </h2>
-            <p className="text-white/60 text-lg">
-              Everything you need to know about CLA
-            </p>
           </div>
 
           {/* Right Column - FAQs */}

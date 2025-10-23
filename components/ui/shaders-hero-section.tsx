@@ -36,8 +36,7 @@ export function HeroContent() {
           transition={{ duration: 0.8, delay: 2.7, ease: [0.25, 0.1, 0.25, 1] }}
           className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-white mb-8 leading-tight"
         >
-          <span className="block">Turn <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">Connections</span> into</span>
-          <span className="block"><span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">Cash-Flowing</span> Income Streams</span>
+          Turn <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">Connections</span> into <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">Cash-Flowing</span> Income Streams
         </motion.h1>
 
         {/* Subtle Tagline */}
