@@ -13,7 +13,7 @@ const teamMembers = [
   },
   {
     name: 'Parth',
-    lastName: 'Gorge',
+    lastName: 'Gogia',
     description: 'Sales Call Specialist',
     imageUrl: '/headshots/Parth.png',
   },
@@ -31,7 +31,7 @@ const teamMembers = [
   },
   {
     name: 'Jimmy',
-    lastName: 'Abdou',
+    lastName: 'Abou El Ezz',
     description: 'Closing Specialist',
     imageUrl: '/headshots/Jimmy.png',
   },
@@ -113,10 +113,10 @@ export default function Faculty() {
                 {/* Content Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent flex flex-col justify-end p-4">
                   <div className="text-center mb-2">
-                    <p className="text-base md:text-lg font-light text-white uppercase tracking-wide">
+                    <p className="text-sm sm:text-base md:text-lg font-light text-white uppercase tracking-wide whitespace-nowrap">
                       {member.name}
                     </p>
-                    <p className="text-base md:text-lg font-extrabold text-white uppercase tracking-wide">
+                    <p className="text-sm sm:text-base md:text-lg font-extrabold text-white uppercase tracking-wide whitespace-nowrap">
                       {member.lastName}
                     </p>
                   </div>
