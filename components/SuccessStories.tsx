@@ -50,8 +50,15 @@ export default function SuccessStories() {
   const maxDisplayed = 6
 
   return (
-    <section className="py-20 md:py-32 border-y" style={{ backgroundColor: '#0c0a05', borderColor: '#544629' }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-32 border-y relative overflow-hidden" style={{ backgroundColor: '#0c0a05', borderColor: '#544629' }}>
+      {/* Background Gradient Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-10 right-10 w-[700px] h-[700px] bg-gradient-radial from-[#b38d38]/12 via-[#7e5a00]/4 to-transparent blur-3xl" />
+        <div className="absolute bottom-20 left-10 w-[600px] h-[600px] bg-gradient-radial from-[#544629]/20 via-transparent to-transparent blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-radial from-[#7e5a00]/8 via-transparent to-transparent blur-3xl" />
+      </div>
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center justify-center mb-12 overflow-hidden">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -93,20 +100,40 @@ export default function SuccessStories() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                  whileHover={{ 
+                    y: -8, 
+                    transition: { duration: 0.2 }
+                  }}
+                  className="relative group"
                 >
+                  {/* Number Badge - Top Left */}
+                  <div className="absolute -top-3 -left-3 z-10 w-12 h-12 rounded-full bg-gradient-to-br from-[#b38d38] to-[#7e5a00] flex items-center justify-center shadow-lg group-hover:shadow-[0_0_20px_rgba(179,141,56,0.6)] transition-all">
+                    <span className="text-[#0c0a05] font-bold text-sm">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  
                   <Card
-                    className="w-80 h-auto p-6 relative backdrop-blur-md border-[#544629]"
-                    style={{ backgroundColor: 'rgba(84, 70, 41, 0.05)' }}
+                    className="w-80 h-auto p-6 relative backdrop-blur-md border-2 shadow-dramatic hover:shadow-[0_4px_6px_-1px_rgba(0,0,0,0.3),0_10px_15px_-3px_rgba(0,0,0,0.2),0_20px_25px_-5px_rgba(0,0,0,0.1),0_0_30px_rgba(179,141,56,0.4)] transition-all duration-300"
+                    style={{ 
+                      backgroundColor: 'rgba(84, 70, 41, 0.1)',
+                      borderColor: 'rgba(84, 70, 41, 0.5)'
+                    }}
                   >
-                  <div className="mb-5">
+                  {/* Hover gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#b38d38]/0 via-[#b38d38]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl pointer-events-none" />
+                  
+                  {/* Quote icon */}
+                  <div className="absolute top-4 right-4 text-[#b38d38]/20 text-4xl font-serif leading-none">"</div>
+                  
+                  <div className="mb-5 relative z-10">
                     <p className="text-white font-light text-base leading-relaxed">
                       {story.text}
                     </p>
                   </div>
 
-                  <div className="flex flex-col">
-                    <span className="font-semibold text-base text-white">
+                  <div className="flex flex-col relative z-10 pt-4 border-t border-[#544629]/30">
+                    <span className="font-semibold text-base text-white group-hover:text-[#b38d38] transition-colors">
                       {story.name}
                     </span>
                     <span className="text-sm text-white/60">

@@ -98,8 +98,14 @@ export default function CourseModules() {
   const [openModule, setOpenModule] = useState<number | null>(null)
 
   return (
-    <section className="py-20 md:py-32" style={{ backgroundColor: '#0c0a05' }} id="curriculum">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-32 relative overflow-hidden" style={{ backgroundColor: '#0c0a05' }} id="curriculum">
+      {/* Background Gradient Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-20 left-1/4 w-[800px] h-[800px] bg-gradient-radial from-[#b38d38]/10 via-[#7e5a00]/3 to-transparent blur-3xl animate-pulse" style={{ animationDuration: '8s' }} />
+        <div className="absolute bottom-40 right-1/4 w-[600px] h-[600px] bg-gradient-radial from-[#544629]/15 via-transparent to-transparent blur-3xl" />
+      </div>
+      
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 overflow-hidden">
           <motion.p
@@ -132,7 +138,7 @@ export default function CourseModules() {
         </div>
 
         {/* Phases List */}
-        <div className="space-y-3">
+        <div className="space-y-4">
           {phases.map((phase, index) => (
             <motion.div
               key={phase.id}
@@ -140,48 +146,66 @@ export default function CourseModules() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="backdrop-blur-sm border border-[#544629] rounded-2xl overflow-hidden"
-              style={{ backgroundColor: 'rgba(84, 70, 41, 0.05)' }}
+              className="border-glow hover-glow shadow-dramatic backdrop-blur-sm rounded-2xl overflow-hidden"
+              style={{ 
+                backgroundColor: 'rgba(84, 70, 41, 0.1)',
+                borderWidth: '2px',
+                borderColor: 'rgba(84, 70, 41, 0.5)'
+              }}
             >
-              {/* Phase Header - Minimal */}
+              {/* Phase Header - Enhanced */}
               <button
                 onClick={() => setOpenModule(openModule === phase.id ? null : phase.id)}
-                className="w-full flex items-center justify-between p-8 hover:bg-[#b38d38]/5 transition-all group text-left"
+                className="w-full flex items-center justify-between p-8 hover:bg-[#b38d38]/10 transition-all group text-left relative overflow-hidden"
               >
-                <div className="flex items-center gap-6">
-                  <span className="text-lg text-[#b38d38] font-light w-8">
-                    0{phase.id}
-                  </span>
+                {/* Hover gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#b38d38]/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                
+                <div className="flex items-center gap-6 relative z-10">
+                  {/* Enhanced Number Badge */}
+                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#b38d38] to-[#7e5a00] flex items-center justify-center shadow-lg group-hover:shadow-[0_0_20px_rgba(179,141,56,0.5)] transition-all">
+                    <span className="text-[#0c0a05] font-bold text-lg">
+                      0{phase.id}
+                    </span>
+                  </div>
+                  
                   <span className="text-xl md:text-2xl text-white font-light group-hover:text-[#b38d38] transition-colors">
                     {phase.title}
                   </span>
                 </div>
-                <div className={`w-px h-8 bg-[#544629] transition-all ${openModule === phase.id ? 'rotate-90' : ''}`} />
+                
+                <div className={`w-px h-8 bg-[#b38d38] transition-all relative z-10 ${openModule === phase.id ? 'rotate-90' : ''}`} />
               </button>
 
               {/* Phase Details */}
               <AnimatePresence>
                 {openModule === phase.id && (
                   <motion.div
-                    initial={{ height: 0 }}
-                    animate={{ height: 'auto' }}
-                    exit={{ height: 0 }}
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
                     transition={{ duration: 0.3 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-10 py-8 border-t border-[#544629]/30" style={{ backgroundColor: 'rgba(12, 10, 5, 0.5)' }}>
-                      {/* Description - Clean */}
-                      <p className="text-base text-white/60 mb-6 leading-relaxed font-light">
+                    <div className="px-10 py-8 border-t-2 border-[#b38d38]/20" style={{ backgroundColor: 'rgba(12, 10, 5, 0.7)' }}>
+                      {/* Description - Enhanced */}
+                      <p className="text-base text-white/70 mb-6 leading-relaxed font-light">
                         {phase.description}
                       </p>
 
-                      {/* Topics - Minimal List */}
+                      {/* Topics - Enhanced List */}
                       <div className="grid md:grid-cols-2 gap-3">
-                        {phase.topics.map((topic, index) => (
-                          <div key={index} className="flex items-center gap-2 text-white/70 text-sm">
-                            <span className="text-[#b38d38]">→</span>
+                        {phase.topics.map((topic, topicIndex) => (
+                          <motion.div 
+                            key={topicIndex}
+                            initial={{ opacity: 0, x: -10 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: topicIndex * 0.05 }}
+                            className="flex items-center gap-3 text-white/70 text-sm group/topic hover:text-[#b38d38] transition-colors"
+                          >
+                            <div className="w-1.5 h-1.5 rounded-full bg-[#b38d38] group-hover/topic:shadow-[0_0_8px_rgba(179,141,56,0.8)]" />
                             <span>{topic}</span>
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
                     </div>

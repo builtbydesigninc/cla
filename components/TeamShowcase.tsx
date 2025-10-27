@@ -4,58 +4,52 @@ import { motion } from 'framer-motion'
 
 const members = [
   {
-    name: 'Parth Gorge',
-    role: 'Sales Call',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=1200&fit=crop',
-    number: '01',
-  },
-  {
     name: 'Mark Suh',
     role: 'Main Instructor',
     avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&h=1200&fit=crop',
-    number: '02',
+    number: '01',
   },
   {
     name: 'Ash Rahman',
     role: 'Outreach',
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&h=1200&fit=crop',
-    number: '03',
+    number: '02',
   },
   {
     name: 'Oliver Ibrahim',
     role: 'Marketing',
     avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=800&h=1200&fit=crop',
-    number: '04',
+    number: '03',
   },
   {
     name: 'Muhammad Bin Sohail',
     role: 'Technology',
     avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=800&h=1200&fit=crop',
-    number: '05',
+    number: '04',
   },
   {
-    name: 'Jimmy Abdou',
+    name: 'Jimmy Abou El Ezz',
     role: 'Closing',
     avatar: 'https://images.unsplash.com/photo-1463453091185-61582044d556?w=800&h=1200&fit=crop',
-    number: '06',
+    number: '05',
   },
   {
     name: 'Gaelle Semaan',
     role: 'Client Success Liaison',
     avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800&h=1200&fit=crop',
-    number: '07',
+    number: '06',
   },
   {
     name: 'Rami H.',
     role: 'Copywriter',
     avatar: 'https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=800&h=1200&fit=crop',
-    number: '08',
+    number: '07',
   },
   {
     name: 'Sharib Sufi',
     role: 'Automations',
     avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=800&h=1200&fit=crop',
-    number: '09',
+    number: '08',
   },
 ]
 

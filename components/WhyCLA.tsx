@@ -1,13 +1,52 @@
 'use client'
 
+import { useState, useEffect, useRef } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Users, Network, Phone, BookOpen, ArrowRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { MagicCard } from "@/components/ui/magic-card"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
 import { ShimmerButton } from "./ui/shimmer-button"
 
 export default function WhyCLA() {
+  const [activeTab, setActiveTab] = useState(0)
+  const [userInteracted, setUserInteracted] = useState(false)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  // Auto-scroll effect
+  useEffect(() => {
+    const startAutoScroll = () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+      
+      timerRef.current = setInterval(() => {
+        if (!userInteracted) {
+          setActiveTab((prev) => (prev + 1) % tabs.length)
+        }
+      }, 4000) // Change tab every 4 seconds
+    }
+
+    startAutoScroll()
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [userInteracted])
+
+  // Reset user interaction after 10 seconds of no activity
+  useEffect(() => {
+    if (userInteracted) {
+      const timeout = setTimeout(() => {
+        setUserInteracted(false)
+      }, 10000)
+      
+      return () => clearTimeout(timeout)
+    }
+  }, [userInteracted, activeTab])
+
+  const handleTabChange = (index: number) => {
+    setActiveTab(index)
+    setUserInteracted(true)
+  }
+
   const tabs = [
     {
       value: "closing-team",
@@ -56,8 +95,14 @@ export default function WhyCLA() {
   ]
 
   return (
-    <section className="py-20 md:py-32 border-y overflow-hidden" style={{ backgroundColor: '#0c0a05', borderColor: '#544629' }}>
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-32 border-y overflow-hidden relative" style={{ backgroundColor: '#0c0a05', borderColor: '#544629' }}>
+      {/* Background Gradient Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-gradient-radial from-[#b38d38]/15 via-[#7e5a00]/5 to-transparent blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-radial from-[#544629]/20 via-transparent to-transparent blur-3xl" />
+      </div>
+      
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex flex-col items-center gap-4 text-center mb-12 overflow-hidden">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -89,11 +134,14 @@ export default function WhyCLA() {
           </motion.p>
         </div>
         
-        <Tabs defaultValue={tabs[0].value} className="mt-8">
+        <Tabs value={tabs[activeTab].value} onValueChange={(value) => {
+          const index = tabs.findIndex(tab => tab.value === value)
+          handleTabChange(index)
+        }} className="mt-8">
           {/* Tab Navigation */}
           <div className="flex justify-center mb-8">
             <TabsList className="inline-grid grid-cols-2 md:grid-cols-4 gap-2 backdrop-blur-md border border-[#544629] p-2 rounded-2xl !h-auto" style={{ backgroundColor: 'rgba(84, 70, 41, 0.15)' }}>
-              {tabs.map((tab) => (
+              {tabs.map((tab, index) => (
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}
@@ -108,52 +156,111 @@ export default function WhyCLA() {
             </TabsList>
           </div>
           
-          {/* Tab Content - Magic Cards with Initial Glow */}
-          <div className="mx-auto max-w-4xl">
-            {tabs.map((tab) => (
-              <TabsContent
-                key={tab.value}
-                value={tab.value}
-                className="flex justify-center"
-              >
-                <MagicCard 
-                  className="p-10 lg:p-12 w-full relative"
-                  gradientColor="#b38d38"
-                  gradientOpacity={0.3}
-                  gradientSize={300}
-                >
-                  {/* Initial glow in top-right */}
-                  <div className="absolute top-0 right-0 w-40 h-40 bg-[#b38d38]/10 rounded-full blur-3xl pointer-events-none" />
-                  
-                  <div className="flex items-start justify-between gap-8">
-                    {/* Left: Content */}
-                    <div className="flex flex-col gap-6 flex-1">
-                      <Badge variant="outline" className="bg-[#b38d38] text-[#0c0a05] border-[#7e5a00] font-semibold w-fit">
-                        {tab.content.badge}
-                      </Badge>
-                      <h3 className="text-3xl md:text-4xl font-light text-white">
-                        {tab.content.title}
-                      </h3>
-                      <p className="text-white/70 text-base max-w-md leading-relaxed">
-                        {tab.content.description}
-                      </p>
-                      <a 
-                        href="#enroll"
-                        className="mt-4 inline-flex items-center gap-2 text-[#b38d38] hover:text-white transition-colors group w-fit"
-                      >
-                        <span className="text-sm font-semibold">Learn More</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </a>
-                    </div>
+          {/* Tab Content - Magic Cards with Breathtaking Animations */}
+          <div className="mx-auto max-w-4xl relative">
+            <AnimatePresence mode="wait">
+              {tabs.map((tab, index) => 
+                activeTab === index ? (
+                  <motion.div
+                    key={tab.value}
+                    initial={{ 
+                      opacity: 0,
+                      scale: 0.95,
+                      y: 20,
+                      rotateX: -5
+                    }}
+                    animate={{ 
+                      opacity: 1,
+                      scale: 1,
+                      y: 0,
+                      rotateX: 0
+                    }}
+                    exit={{ 
+                      opacity: 0,
+                      scale: 0.95,
+                      y: -20,
+                      rotateX: 5
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      ease: [0.25, 0.1, 0.25, 1.0],
+                      opacity: { duration: 0.4 }
+                    }}
+                    className="flex justify-center"
+                    style={{ perspective: '1000px' }}
+                  >
+                    <MagicCard 
+                      className="p-10 lg:p-12 w-full relative overflow-hidden"
+                      gradientColor="#b38d38"
+                      gradientOpacity={0.3}
+                      gradientSize={300}
+                    >
+                      {/* Animated glow effect */}
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="absolute top-0 right-0 w-40 h-40 bg-[#b38d38]/10 rounded-full blur-3xl pointer-events-none" 
+                      />
+                      
+                      <div className="flex items-start justify-between gap-8">
+                        {/* Left: Content with staggered animations */}
+                        <div className="flex flex-col gap-6 flex-1">
+                          <motion.div
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                          >
+                            <Badge variant="outline" className="bg-[#b38d38] text-[#0c0a05] border-[#7e5a00] font-semibold w-fit">
+                              {tab.content.badge}
+                            </Badge>
+                          </motion.div>
+                          
+                          <motion.h3 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="text-3xl md:text-4xl font-light text-white"
+                          >
+                            {tab.content.title}
+                          </motion.h3>
+                          
+                          <motion.p 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="text-white/70 text-base max-w-md leading-relaxed"
+                          >
+                            {tab.content.description}
+                          </motion.p>
+                          
+                          <motion.a 
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            href="#enroll"
+                            className="mt-4 inline-flex items-center gap-2 text-[#b38d38] hover:text-white transition-colors group w-fit"
+                          >
+                            <span className="text-sm font-semibold">Learn More</span>
+                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          </motion.a>
+                        </div>
 
-                    {/* Right: Icon (placeholder for graphic) */}
-                    <div className="hidden md:flex items-center justify-center">
-                      {tab.iconLarge}
-                    </div>
-                  </div>
-                </MagicCard>
-              </TabsContent>
-            ))}
+                        {/* Right: Icon with rotation animation */}
+                        <motion.div 
+                          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          transition={{ duration: 0.6, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+                          className="hidden md:flex items-center justify-center"
+                        >
+                          {tab.iconLarge}
+                        </motion.div>
+                      </div>
+                    </MagicCard>
+                  </motion.div>
+                ) : null
+              )}
+            </AnimatePresence>
           </div>
         </Tabs>
 

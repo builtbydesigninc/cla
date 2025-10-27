@@ -34,8 +34,14 @@ export default function FAQ() {
   ]
 
   return (
-    <section className="py-24 px-4 sm:px-6 lg:px-8" style={{ backgroundColor: '#0c0a05' }}>
-      <div className="max-w-7xl mx-auto">
+    <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden" style={{ backgroundColor: '#0c0a05' }}>
+      {/* Background Gradient Effects */}
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-[#b38d38]/15 via-[#7e5a00]/5 to-transparent blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gradient-radial from-[#544629]/20 via-transparent to-transparent blur-3xl" />
+      </div>
+      
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Left Column - Heading */}
           <div className="lg:col-span-4">
@@ -50,22 +56,36 @@ export default function FAQ() {
           {faqs.map((faq, index) => (
             <div
               key={index}
-              className="border border-[#544629] rounded-2xl overflow-hidden backdrop-blur-sm"
-              style={{ backgroundColor: 'rgba(84, 70, 41, 0.1)' }}
+              className="border-glow hover-glow shadow-dramatic rounded-2xl overflow-hidden backdrop-blur-sm relative"
+              style={{ 
+                backgroundColor: 'rgba(84, 70, 41, 0.1)',
+                borderWidth: '2px',
+                borderColor: 'rgba(84, 70, 41, 0.5)'
+              }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full text-left p-6 flex items-center justify-between hover:bg-[#544629]/20 transition-colors"
+                className="w-full text-left p-6 flex items-center gap-4 hover:bg-[#544629]/20 transition-all group relative z-10"
               >
-                <span className="text-lg font-light text-white pr-8">{faq.question}</span>
+                {/* Number Badge */}
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-gradient-to-br from-[#b38d38] to-[#7e5a00] flex items-center justify-center shadow-lg">
+                  <span className="text-[#0c0a05] font-bold text-sm">
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+                </div>
+                
+                <span className="text-lg font-light text-white pr-8 flex-1 group-hover:text-[#b38d38] transition-colors">
+                  {faq.question}
+                </span>
+                
                 {openIndex === index ? (
-                  <Minus className="w-6 h-6 text-[#b38d38] flex-shrink-0" />
+                  <Minus className="w-6 h-6 text-[#b38d38] flex-shrink-0 transition-transform" />
                 ) : (
-                  <Plus className="w-6 h-6 text-[#b38d38] flex-shrink-0" />
+                  <Plus className="w-6 h-6 text-[#b38d38] flex-shrink-0 transition-transform" />
                 )}
               </button>
               {openIndex === index && (
-                <div className="px-6 pb-6">
+                <div className="px-6 pb-6 pl-[88px]">
                   <p className="text-white/70 leading-relaxed">{faq.answer}</p>
                 </div>
               )}

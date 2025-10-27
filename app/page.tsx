@@ -1,6 +1,5 @@
 import Header from '@/components/Header'
 import Hero from '@/components/Hero'
-import VSLSection from '@/components/VSLSection'
 import CourseModules from '@/components/CourseModules'
 import Faculty from '@/components/Faculty'
 import SuccessStories from '@/components/SuccessStories'
@@ -17,7 +16,6 @@ export default function Home() {
     <main className="min-h-screen" style={{ backgroundColor: '#0c0a05' }}>
       <Header />
       <Hero />
-      <VSLSection />
       <WhyCLA />
       <CourseModules />
       <Faculty />
