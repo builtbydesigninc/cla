@@ -25,6 +25,7 @@ const GlassSurface = ({
   mixBlendMode = 'difference',
   className = '',
   style = {}
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }: any) => {
   const uniqueId = useId().replace(/:/g, '-')
   const filterId = `glass-filter-${uniqueId}`

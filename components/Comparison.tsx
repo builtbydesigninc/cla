@@ -46,7 +46,7 @@ export default function Comparison() {
             viewport={{ once: true }}
             className="text-xl text-white/70 max-w-3xl mx-auto"
           >
-            Most people get lured into models that are the opposite of beginner-friendly. Here's why the connector model is different.
+            Most people get lured into models that are the opposite of beginner-friendly. Here&apos;s why the connector model is different.
           </motion.p>
         </div>
 
@@ -124,7 +124,7 @@ export default function Comparison() {
         <div className="mt-32">
           <div className="text-center mb-16">
             <p className="text-sm uppercase tracking-wider text-white/60 font-light mb-4">
-              WHAT'S INCLUDED
+              WHAT&apos;S INCLUDED
             </p>
             <h3 className="text-4xl md:text-5xl font-light text-white mb-6">
               All Your Resources in <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">One Place</span>

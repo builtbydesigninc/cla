@@ -127,7 +127,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
         "text-base sm:text-xl font-medium",
         isCenter ? "text-white" : "text-gray-800"
       )}>
-        "{testimonial.testimonial}"
+        &ldquo;{testimonial.testimonial}&rdquo;
       </h3>
       <p className={cn(
         "absolute bottom-8 left-8 right-8 mt-2 text-sm italic",

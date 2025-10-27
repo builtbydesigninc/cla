@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from "react"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Users, Network, Phone, BookOpen, ArrowRight } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { MagicCard } from "@/components/ui/magic-card"
@@ -141,7 +141,7 @@ export default function WhyCLA() {
           {/* Tab Navigation */}
           <div className="flex justify-center mb-8">
             <TabsList className="inline-grid grid-cols-2 md:grid-cols-4 gap-2 backdrop-blur-md border border-[#544629] p-2 rounded-2xl !h-auto" style={{ backgroundColor: 'rgba(84, 70, 41, 0.15)' }}>
-              {tabs.map((tab, index) => (
+              {tabs.map((tab) => (
                 <TabsTrigger
                   key={tab.value}
                   value={tab.value}

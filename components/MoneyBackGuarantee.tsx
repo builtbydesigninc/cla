@@ -37,7 +37,7 @@ export default function MoneyBackGuarantee() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-white/80 mb-10 max-w-2xl mx-auto"
           >
-            Follow the system for 90 days. If you don't see results, full refund.
+            Follow the system for 90 days. If you don&apos;t see results, full refund.
           </motion.p>
 
           {/* CTA - Centered */}

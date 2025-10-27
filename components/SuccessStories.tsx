@@ -124,7 +124,7 @@ export default function SuccessStories() {
                   <div className="absolute inset-0 bg-gradient-to-br from-[#b38d38]/0 via-[#b38d38]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl pointer-events-none" />
                   
                   {/* Quote icon */}
-                  <div className="absolute top-4 right-4 text-[#b38d38]/20 text-4xl font-serif leading-none">"</div>
+                  <div className="absolute top-4 right-4 text-[#b38d38]/20 text-4xl font-serif leading-none">&ldquo;</div>
                   
                   <div className="mb-5 relative z-10">
                     <p className="text-white font-light text-base leading-relaxed">

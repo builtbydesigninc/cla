@@ -8,11 +8,11 @@ const Loader = () => {
     <motion.div 
       initial={{ opacity: 1 }}
       animate={{ opacity: 0 }}
-      transition={{ duration: 0.5, delay: 2 }}
+      transition={{ duration: 0.3, delay: 0.7 }}
       className="fixed inset-0 z-[9999] flex items-center justify-center"
       style={{ backgroundColor: '#0c0a05' }}
-      onAnimationComplete={(definition: any) => {
-        if (definition.opacity === 0) {
+      onAnimationComplete={(definition) => {
+        if (typeof definition === 'object' && definition !== null && 'opacity' in definition && definition.opacity === 0) {
           const loader = document.getElementById('cla-loader')
           if (loader) {
             loader.style.display = 'none'
@@ -32,7 +32,7 @@ const Loader = () => {
         <div 
           className="absolute inset-0 flex items-center justify-center"
           style={{
-            animation: 'scan 2s ease-in-out',
+            animation: 'scan 1s ease-in-out',
           }}
         >
           <div className="w-full h-1 bg-gradient-to-r from-transparent via-[#b38d38] to-transparent opacity-90 blur-sm" />

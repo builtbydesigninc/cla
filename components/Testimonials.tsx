@@ -112,7 +112,7 @@ export default function Testimonials() {
               transition={{ duration: 0.5 }}
               className="text-white text-xl md:text-2xl mb-8 leading-relaxed font-light pl-4"
             >
-              "{current.quote}"
+              &ldquo;{current.quote}&rdquo;
             </motion.p>
 
             <motion.footer
