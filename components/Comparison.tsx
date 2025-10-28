@@ -72,7 +72,7 @@ export default function Comparison() {
                   key={index}
                   className="flex items-start gap-3 py-4 border-b border-[#544629]/20 last:border-b-0"
                 >
-                  <X className="w-5 h-5 text-white/40 shrink-0 mt-0.5" />
+                  <X className="w-5 h-5 text-red-500 shrink-0 mt-0.5" />
                   <p className="text-white/70 font-light">{item.traditional}</p>
                 </div>
               ))}
@@ -100,7 +100,7 @@ export default function Comparison() {
                   key={index}
                   className="flex items-start gap-3 py-4 border-b border-[#544629]/30 last:border-b-0"
                 >
-                  <Check className="w-5 h-5 text-[#b38d38] shrink-0 mt-0.5" />
+                  <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
                   <p className="text-white font-light">{item.connector}</p>
                 </div>
               ))}

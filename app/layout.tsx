@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Loader from '@/components/Loader'
+// import Loader from '@/components/Loader'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -68,7 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Loader />
+        {/* <Loader /> */}
         {children}
       </body>
     </html>

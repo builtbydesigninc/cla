@@ -3,7 +3,7 @@ import Hero from '@/components/Hero'
 import CourseModules from '@/components/CourseModules'
 import Faculty from '@/components/Faculty'
 import SuccessStories from '@/components/SuccessStories'
-import Testimonials from '@/components/Testimonials'
+// import Testimonials from '@/components/Testimonials'
 import WhyCLA from '@/components/WhyCLA'
 import Comparison from '@/components/Comparison'
 import MoneyBackGuarantee from '@/components/MoneyBackGuarantee'
@@ -19,7 +19,6 @@ export default function Home() {
       <WhyCLA />
       <CourseModules />
       <Faculty />
-      <Testimonials />
       <SuccessStories />
       <Comparison />
       <MoneyBackGuarantee />

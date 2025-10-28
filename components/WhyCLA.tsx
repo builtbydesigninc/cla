@@ -130,7 +130,7 @@ export default function WhyCLA() {
             viewport={{ once: true }}
             className="text-xl text-white/70 max-w-2xl"
           >
-            Everything you need to start earning $100k+ per month connecting clinics with peptide suppliers.
+            Everything you need to build a six or seven-figure peptide facilitation business.
           </motion.p>
         </div>
         
@@ -233,17 +233,6 @@ export default function WhyCLA() {
                           >
                             {tab.content.description}
                           </motion.p>
-                          
-                          <motion.a 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.4 }}
-                            href="#enroll"
-                            className="mt-4 inline-flex items-center gap-2 text-[#b38d38] hover:text-white transition-colors group w-fit"
-                          >
-                            <span className="text-sm font-semibold">Learn More</span>
-                            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                          </motion.a>
                         </div>
 
                         {/* Right: Icon with rotation animation */}

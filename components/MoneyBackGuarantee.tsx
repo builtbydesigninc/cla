@@ -27,7 +27,7 @@ export default function MoneyBackGuarantee() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-4xl md:text-5xl font-light text-white mb-6"
           >
-            <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">90-Day</span> Guarantee
+            <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">90-Day</span> Action-Taker's Guarantee
           </motion.h2>
 
           {/* Simple Promise */}
@@ -37,7 +37,7 @@ export default function MoneyBackGuarantee() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl text-white/80 mb-10 max-w-2xl mx-auto"
           >
-            Follow the system for 90 days. If you don&apos;t see results, full refund.
+            We guarantee our system, if you guarantee your effort. If you follow the system for 90 days and don&apos;t see results, we&apos;ll send you a full refund.
           </motion.p>
 
           {/* CTA - Centered */}
