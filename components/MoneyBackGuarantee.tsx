@@ -27,7 +27,7 @@ export default function MoneyBackGuarantee() {
             transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
             className="text-4xl md:text-5xl font-light text-white mb-6"
           >
-            <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">90-Day</span> Action-Taker's Guarantee
+            <span style={{ fontFamily: 'Awesome Serif', fontStyle: 'italic' }} className="text-[#b38d38]">90-Day</span> Action-Taker&apos;s Guarantee
           </motion.h2>
 
           {/* Simple Promise */}
