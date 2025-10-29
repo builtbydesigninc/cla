@@ -57,7 +57,7 @@ export default function Header() {
 
             {/* CTA Button - Far Right (Desktop Only) */}
             <a
-              href="#enroll"
+              href="/book"
               className="hidden md:flex backdrop-blur-md border border-[#544629] rounded-full px-6 py-2 hover:border-[#b38d38] hover:bg-[#b38d38]/10 transition-all items-center gap-2 text-xs font-bold uppercase tracking-wider text-white"
               style={{ backgroundColor: 'rgba(84, 70, 41, 0.15)' }}
             >

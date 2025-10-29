@@ -7,12 +7,12 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Clinic Launch Academy',
-  description: 'Turn connections into cash-flowing income streams. Master the connector economy and build a six or seven-figure peptide facilitation business with proven systems and elite support.',
+  description: 'Your Turnkey Peptide Empire Opportunity. We\'ve Built it. You Sell it. You Own it. The biggest opportunity since online advertising, dropshipping, & crypto.',
   keywords: ['clinic launch academy', 'peptide business', 'connector economy', 'facilitation business', 'healthcare entrepreneurship', 'passive income'],
   authors: [{ name: 'Clinic Launch Academy' }],
   openGraph: {
     title: 'Clinic Launch Academy',
-    description: 'Turn connections into cash-flowing income streams. The connector economy for elite entrepreneurs.',
+    description: 'Your Turnkey Peptide Empire Opportunity. We\'ve Built it. You Sell it. You Own it.',
     url: 'https://cliniclaunchacademy.com',
     siteName: 'Clinic Launch Academy',
     type: 'website',
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Clinic Launch Academy',
-    description: 'Turn connections into cash-flowing income streams. The connector economy for elite entrepreneurs.',
+    description: 'Your Turnkey Peptide Empire Opportunity. We\'ve Built it. You Sell it. You Own it.',
     images: ['/cla-logo.png'],
   },
   icons: {
