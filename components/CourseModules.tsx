@@ -14,7 +14,6 @@ const modules = [
     description: 'Before you can earn like a top 1%er, you have to think like one. Rewire your mindset for wealth and build unstoppable daily habits.',
     instructor: 'Mark Suh',
     instructorLabel: 'Founder',
-    duration: '4h',
     image: '/headshots/mark.png',
     topics: [
       'Rewiring your mindset for wealth and success',
@@ -31,7 +30,6 @@ const modules = [
     description: 'Build an irresistible professional brand that positions you as a leading authority in healthcare facilitation.',
     instructor: 'Mark Suh',
     instructorLabel: 'Branding',
-    duration: '3h',
     image: '/headshots/mark.png',
     topics: [
       'Creating your authority positioning',
@@ -48,7 +46,6 @@ const modules = [
     description: 'Build a predictable, scalable client acquisition machine using paid advertising to target high-value medical practices.',
     instructor: 'Oliver Ibrahim',
     instructorLabel: 'Paid Ads',
-    duration: '5h',
     image: '/headshots/Oliver Ibrahim.png',
     topics: [
       'Facebook Ads for clinic targeting',
@@ -65,7 +62,6 @@ const modules = [
     description: 'Master the art of cold outreach to clinics and medical practices. Learn how to craft irresistible messages that get responses.',
     instructor: 'Ash Rahman',
     instructorLabel: 'Cold Outreach',
-    duration: '3h',
     image: '/headshots/Ash Rahman.png',
     topics: [
       'Cold email strategies that work',
@@ -82,7 +78,6 @@ const modules = [
     description: 'Learn the art and science of high-value B2B sales. Navigate any conversation with confidence and close deals like a pro.',
     instructor: 'Jimmy',
     instructorLabel: 'Sales',
-    duration: '6h',
     image: '/headshots/Jimmy.png',
     topics: [
       'The psychology of connection',
@@ -100,7 +95,6 @@ const modules = [
     description: 'Your complete step-by-step guide to connecting clinics with peptide suppliers and earning recurring commissions.',
     instructor: 'Mark Suh',
     instructorLabel: 'Strategy',
-    duration: '4h',
     image: '/headshots/mark.png',
     topics: [
       'Finding qualified clinic prospects',
@@ -118,7 +112,6 @@ const modules = [
     description: 'Immediate access to our exclusive multi-million dollar supply chain and fulfillment partners. Everything done for you.',
     instructor: 'Mark Suh',
     instructorLabel: 'Operations',
-    duration: '2h',
     image: '/headshots/mark.png',
     topics: [
       'Vetted network of peptide suppliers',
@@ -135,7 +128,6 @@ const modules = [
     description: 'Advanced strategies for scaling to $100k+ per month and building a sustainable business empire.',
     instructor: 'Mark Suh',
     instructorLabel: 'Scaling',
-    duration: '5h',
     image: '/headshots/mark.png',
     topics: [
       'Scaling your connector business',
@@ -152,7 +144,6 @@ const modules = [
     description: 'Master the art of persuasive writing. Create compelling messages that resonate with clinic owners and drive action.',
     instructor: 'Rami',
     instructorLabel: 'Copywriting',
-    duration: '4h',
     image: '/headshots/Rami.png',
     topics: [
       'High-converting email templates',
@@ -280,7 +271,6 @@ export default function CourseModules() {
                       </p>
                       <div className="flex gap-6 items-center text-white">
                         <span className="text-base font-semibold capitalize">{module.instructor}</span>
-                        <span className="text-base">Duration: {module.duration}</span>
                       </div>
                     </div>
                   </div>
