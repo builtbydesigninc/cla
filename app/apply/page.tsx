@@ -12,7 +12,7 @@ export default function ApplyPage() {
 
   useEffect(() => {
     // Listen for typeform submission
-    const handleTypeformSubmit = (event: any) => {
+    const handleTypeformSubmit = (event: MessageEvent) => {
       if (event.data?.type === 'form-submit') {
         // Redirect to booking page after typeform submission
         router.push('/book')

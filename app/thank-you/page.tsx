@@ -57,7 +57,7 @@ export default function ThankYouPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6"
           >
-            You're All Set!
+            You&apos;re All Set!
           </motion.h1>
 
           <motion.p
@@ -90,10 +90,10 @@ export default function ThankYouPage() {
               Thank you for scheduling your vetting call with Clinic Launch Academy!
             </p>
             <p className="text-white/60 text-base md:text-lg leading-relaxed mb-4">
-              We've received your application and booking. A confirmation email has been sent to your inbox with all the details.
+              We&apos;ve received your application and booking. A confirmation email has been sent to your inbox with all the details.
             </p>
             <p className="text-white/60 text-base md:text-lg leading-relaxed">
-              We're excited to speak with you and look forward to seeing you on the call!
+              We&apos;re excited to speak with you and look forward to seeing you on the call!
             </p>
           </motion.div>
 

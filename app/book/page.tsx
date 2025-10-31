@@ -12,7 +12,7 @@ export default function BookPage() {
 
   useEffect(() => {
     // Listen for booking calendar submission
-    const handleBookingSubmit = (event: any) => {
+    const handleBookingSubmit = (event: MessageEvent) => {
       // GHL calendar submissions typically send message events
       if (event.data && (
         event.data.type === 'booking-confirmed' || 
