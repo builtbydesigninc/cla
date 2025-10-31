@@ -58,7 +58,7 @@ export default function BookPage() {
         strategy="lazyOnload"
       />
       
-      <main className="min-h-screen" style={{ backgroundColor: '#0c0a05' }}>
+      <main className="w-full" style={{ backgroundColor: '#0c0a05', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         {/* Header with Logo */}
         <div className="py-8 px-4">
           <div className="max-w-[1160px] mx-auto">
@@ -75,7 +75,7 @@ export default function BookPage() {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-[1170px] mx-auto px-4 pb-20">
+        <div className="flex-1 max-w-[1170px] mx-auto px-4 py-12 md:py-20 w-full">
           {/* Heading Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -121,7 +121,7 @@ export default function BookPage() {
                     width: '100%',
                     border: 'none',
                     overflow: 'hidden',
-                    minHeight: '700px'
+                    height: '600px'
                   }} 
                   scrolling="no" 
                   id="StgVKa57nyEt8FKZg7Ga_1761711862621"
