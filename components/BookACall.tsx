@@ -35,7 +35,7 @@ export default function ApplicationOnly() {
 
           {/* CTA - Centered */}
           <div className="flex justify-center">
-            <a href="/book">
+            <a href="/apply">
               <ShimmerButton
                 shimmerColor="#b38d38"
                 shimmerDuration="2.5s"

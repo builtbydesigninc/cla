@@ -128,7 +128,7 @@ export default function Faculty() {
 
         {/* CTA - Centered After Section */}
         <div className="flex justify-center mt-16">
-          <a href="#enroll">
+          <a href="/apply">
             <ShimmerButton shimmerColor="#b38d38" shimmerDuration="2.5s">
               <span className="flex items-center gap-2">
                 Apply Now

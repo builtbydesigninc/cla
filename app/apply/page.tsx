@@ -3,40 +3,34 @@
 import { useEffect } from "react"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import Script from "next/script"
 import Link from "next/link"
+import Script from "next/script"
 import { useRouter } from "next/navigation"
 
-export default function BookPage() {
+export default function ApplyPage() {
   const router = useRouter()
 
   useEffect(() => {
-    // Listen for booking calendar submission
-    const handleBookingSubmit = (event: MessageEvent) => {
-      // GHL calendar submissions typically send message events
-      if (event.data && (
-        event.data.type === 'booking-confirmed' || 
-        event.data.type === 'hsFormCallback' ||
-        event.data === 'booking-success'
-      )) {
-        // Redirect to thank you page after booking submission
-        router.push('/thank-you')
+    // Listen for typeform submission
+    const handleTypeformSubmit = (event: MessageEvent) => {
+      if (event.data?.type === 'form-submit') {
+        // Redirect to booking page after typeform submission
+        router.push('/book')
       }
     }
 
-    window.addEventListener('message', handleBookingSubmit)
+    window.addEventListener('message', handleTypeformSubmit)
 
     return () => {
-      window.removeEventListener('message', handleBookingSubmit)
+      window.removeEventListener('message', handleTypeformSubmit)
     }
   }, [router])
 
   return (
     <>
       <Script 
-        src="https://api.leadconnectorhq.com/js/form_embed.js" 
-        type="text/javascript"
-        strategy="lazyOnload"
+        src="//embed.typeform.com/next/embed.js" 
+        strategy="afterInteractive"
       />
       
       <main className="min-h-screen" style={{ backgroundColor: '#0c0a05' }}>
@@ -65,8 +59,7 @@ export default function BookPage() {
             className="text-center mb-12"
           >
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Congratulations! You&apos;ve Been<br />
-              Approved To Book Your Vetting Call
+              Start Your Application
             </h1>
             <p 
               className="text-2xl md:text-3xl"
@@ -76,11 +69,11 @@ export default function BookPage() {
                 color: '#b38d38'
               }}
             >
-              Hang tight — your scheduling options are loading below
+              Complete the form below to begin your journey
             </p>
           </motion.div>
 
-          {/* Calendar Embed */}
+          {/* Typeform Embed */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -92,23 +85,14 @@ export default function BookPage() {
               style={{
                 background: 'rgba(179, 141, 56, 0.08)',
                 border: '1px solid rgba(179, 141, 56, 0.2)',
-                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px 0 rgba(179, 141, 56, 0.15)'
+                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px 0 rgba(179, 141, 56, 0.15)',
+                minHeight: '700px'
               }}
             >
-              <div className="p-4 md:p-8">
-                <iframe 
-                  src="https://api.leadconnectorhq.com/widget/booking/StgVKa57nyEt8FKZg7Ga" 
-                  style={{ 
-                    width: '100%',
-                    border: 'none',
-                    overflow: 'hidden',
-                    minHeight: '700px'
-                  }} 
-                  scrolling="no" 
-                  id="StgVKa57nyEt8FKZg7Ga_1761711862621"
-                  title="Booking Calendar"
-                />
-              </div>
+              <div 
+                data-tf-live="01K8VYY96EZFGZA6KGPJNSR0FS"
+                style={{ width: '100%', height: '700px' }}
+              />
             </div>
           </motion.div>
 
@@ -134,4 +118,3 @@ export default function BookPage() {
     </>
   )
 }
-

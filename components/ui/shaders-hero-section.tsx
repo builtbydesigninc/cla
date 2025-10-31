@@ -85,7 +85,7 @@ export function HeroContent() {
           transition={{ duration: 0.5, delay: 1.1 }}
           className="flex justify-center"
         >
-          <a href="/book">
+          <a href="/apply">
             <ShimmerButton
               shimmerColor="#b38d38"
               shimmerDuration="2.5s"
