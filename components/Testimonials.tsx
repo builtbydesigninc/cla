@@ -179,10 +179,7 @@ export default function Testimonials() {
         {/* CTA - Centered After Section */}
         <div className="flex justify-center mt-16">
           <a href="/apply">
-            <ShimmerButton
-              shimmerColor="#b38d38"
-              shimmerDuration="2.5s"
-            >
+            <ShimmerButton>
               <span className="flex items-center gap-2">
                 Apply Now
                 <ArrowRight className="w-4 h-4" />

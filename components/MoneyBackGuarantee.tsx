@@ -42,11 +42,11 @@ export default function MoneyBackGuarantee() {
 
           {/* CTA - Centered */}
           <div className="flex justify-center">
-            <a href="#enroll">
-              <ShimmerButton shimmerColor="#b38d38" shimmerDuration="2.5s">
+            <a href="/apply">
+              <ShimmerButton>
                 <span className="flex items-center gap-2">
                   Apply to Join
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-4 h-4" />
                 </span>
               </ShimmerButton>
             </a>

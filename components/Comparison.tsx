@@ -111,7 +111,7 @@ export default function Comparison() {
         {/* CTA - Centered After Comparison */}
         <div className="flex justify-center">
           <a href="/apply">
-            <ShimmerButton shimmerColor="#b38d38" shimmerDuration="2.5s">
+            <ShimmerButton>
               <span className="flex items-center gap-2">
                 Apply Now
                 <ArrowRight className="w-4 h-4" />
@@ -136,7 +136,7 @@ export default function Comparison() {
           {/* CTA - Centered After Resources */}
           <div className="flex justify-center mt-16">
             <a href="/apply">
-              <ShimmerButton shimmerColor="#b38d38" shimmerDuration="2.5s">
+              <ShimmerButton>
                 <span className="flex items-center gap-2">
                   Apply Now
                   <ArrowRight className="w-4 h-4" />

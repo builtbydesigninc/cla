@@ -149,11 +149,7 @@ export default function SuccessStories() {
             <>
               <div className="absolute bottom-0 left-0 w-full h-20 bg-gradient-to-t from-[#0c0a05] to-transparent pointer-events-none" />
               <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20">
-                <ShimmerButton
-                  shimmerColor="#b38d38"
-                  shimmerDuration="2.5s"
-                  onClick={() => setShowAll(true)}
-                >
+                <ShimmerButton onClick={() => setShowAll(true)}>
                   Load More
                 </ShimmerButton>
               </div>
@@ -164,10 +160,7 @@ export default function SuccessStories() {
         {/* CTA - Centered After Section */}
         <div className="flex justify-center mt-16">
           <a href="/apply">
-            <ShimmerButton
-              shimmerColor="#b38d38"
-              shimmerDuration="2.5s"
-            >
+            <ShimmerButton>
               <span className="flex items-center gap-2">
                 Apply Now
                 <ArrowRight className="w-4 h-4" />

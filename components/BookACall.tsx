@@ -36,14 +36,10 @@ export default function ApplicationOnly() {
           {/* CTA - Centered */}
           <div className="flex justify-center">
             <a href="/apply">
-              <ShimmerButton
-                shimmerColor="#b38d38"
-                shimmerDuration="2.5s"
-                className="text-lg"
-              >
-                <span className="flex items-center gap-3">
+              <ShimmerButton>
+                <span className="flex items-center gap-2">
                   APPLY NOW
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-4 h-4" />
                 </span>
               </ShimmerButton>
             </a>

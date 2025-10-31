@@ -5,50 +5,79 @@ import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
 import Script from "next/script"
 import Link from "next/link"
-import { CheckCircle2, ArrowRight } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { CheckCircle2 } from "lucide-react"
 import Footer from "@/components/Footer"
 
 export default function BookPage() {
   const [isBooked, setIsBooked] = useState(false)
+  const router = useRouter()
 
   useEffect(() => {
+    // Check URL parameters for booking confirmation
+    const urlParams = new URLSearchParams(window.location.search)
+    if (urlParams.get('booking') === 'confirmed' || 
+        urlParams.get('status') === 'confirmed' ||
+        urlParams.get('booked') === 'true') {
+      console.log('Booking confirmed via URL parameter! Redirecting...')
+      router.push('/thank-you')
+      return
+    }
+
     // Listen for booking calendar submission
     const handleBookingSubmit = (event: MessageEvent) => {
+      // Log all messages for debugging
+      console.log('Received postMessage:', event.data)
+      
       // Check for various booking confirmation messages
-      if (event.data && (
-        event.data.type === 'booking-confirmed' || 
-        event.data.type === 'hsFormCallback' ||
-        event.data === 'booking-success' ||
-        event.data.eventName === 'booking.completed' ||
-        (typeof event.data === 'string' && event.data.includes('booking'))
-      )) {
-        setIsBooked(true)
+      if (event.data) {
+        const data = event.data
+        
+        // Check if it's from leadconnectorhq
+        const isLeadConnector = event.origin?.includes('leadconnectorhq.com')
+        
+        // Multiple patterns for booking confirmation
+        const isBookingConfirmed = 
+          data.type === 'booking-confirmed' || 
+          data.type === 'hsFormCallback' ||
+          data.type === 'appointment_booked' ||
+          data.type === 'submit' ||
+          data === 'booking-success' ||
+          data.eventName === 'booking.completed' ||
+          data.event === 'booking.completed' ||
+          data.status === 'confirmed' ||
+          data.status === 'booked' ||
+          data.message === 'appointment_scheduled' ||
+          (typeof data === 'string' && (
+            data.includes('booking') || 
+            data.includes('confirmed') || 
+            data.includes('scheduled') ||
+            data.includes('appointment')
+          )) ||
+          (typeof data === 'object' && (
+            data.booking || 
+            data.confirmed || 
+            data.scheduled ||
+            data.appointment
+          ))
+        
+        if (isBookingConfirmed || (isLeadConnector && data.type)) {
+          console.log('Booking confirmed! Redirecting...')
+          setIsBooked(true)
+          // Automatically redirect to thank you page after 1.5 seconds
+          setTimeout(() => {
+            router.push('/thank-you')
+          }, 1500)
+        }
       }
     }
 
     window.addEventListener('message', handleBookingSubmit)
 
-    // Also check for URL changes in the iframe (fallback)
-    const checkInterval = setInterval(() => {
-      const iframe = document.getElementById('StgVKa57nyEt8FKZg7Ga_1761711862621') as HTMLIFrameElement
-      if (iframe) {
-        try {
-          // This might not work due to CORS, but worth trying
-          if (iframe.contentWindow?.location.href.includes('success') || 
-              iframe.contentWindow?.location.href.includes('confirmed')) {
-            setIsBooked(true)
-          }
-        } catch {
-          // Silently fail if CORS blocks us
-        }
-      }
-    }, 2000)
-
     return () => {
       window.removeEventListener('message', handleBookingSubmit)
-      clearInterval(checkInterval)
     }
-  }, [])
+  }, [router])
 
   return (
     <>
@@ -131,14 +160,14 @@ export default function BookPage() {
             </div>
           </motion.div>
 
-          {/* Booking Confirmation Section - Appears after submission */}
+          {/* Booking Confirmation Section - Appears briefly before redirect */}
           <AnimatePresence>
             {isBooked && (
               <motion.div
                 initial={{ opacity: 0, y: 30, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -30 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
+                transition={{ duration: 0.5 }}
                 className="max-w-[936px] mx-auto mt-12"
               >
                 <div 
@@ -149,48 +178,57 @@ export default function BookPage() {
                     boxShadow: '0 8px 32px 0 rgba(179, 141, 56, 0.3)'
                   }}
                 >
-                  <CheckCircle2 className="w-16 h-16 text-[#d4af37] mx-auto mb-6" />
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                  >
+                    <CheckCircle2 className="w-16 h-16 text-[#d4af37] mx-auto mb-6" />
+                  </motion.div>
                   <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                     Booking Confirmed!
                   </h2>
-                  <p className="text-xl text-white/80 mb-8">
-                    We&apos;ve received your booking. A confirmation email is on its way!
-                  </p>
-                  <Link href="/thank-you">
-                    <button
-                      className="group relative z-0 flex mx-auto cursor-pointer items-center justify-center overflow-hidden rounded-full border-2 border-[#b38d38] px-10 py-5 whitespace-nowrap text-white uppercase tracking-wider font-bold text-lg hover:border-[#d4af37] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all"
-                      style={{
-                        background: 'linear-gradient(to bottom right, #b38d38, #d4af37, #b38d38)'
-                      }}
-                    >
-                      <span className="flex items-center gap-3">
-                        Continue
-                        <ArrowRight className="w-6 h-6" />
-                      </span>
-                    </button>
-                  </Link>
-                  <p className="text-white/50 text-sm mt-6">
-                    Or manually set your booking as complete if the button doesn&apos;t appear
+                  <p className="text-xl text-white/80">
+                    Redirecting you now...
                   </p>
                 </div>
               </motion.div>
             )}
           </AnimatePresence>
 
-          {/* Manual Trigger Button (for testing/backup) */}
+          {/* Completion Prompt - Shows after booking */}
           {!isBooked && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="text-center mt-12"
+              transition={{ duration: 0.6, delay: 1.5 }}
+              className="text-center mt-16"
             >
-              <button
-                onClick={() => setIsBooked(true)}
-                className="text-[#b38d38] hover:text-[#d4af37] text-sm underline transition-colors"
+              <motion.div
+                className="backdrop-blur-xl rounded-2xl p-6 md:p-8 max-w-[600px] mx-auto"
+                style={{
+                  background: 'rgba(179, 141, 56, 0.08)',
+                  border: '1px solid rgba(179, 141, 56, 0.2)',
+                  boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3)'
+                }}
               >
-                Already booked? Click here to continue
-              </button>
+                <p className="text-white/80 text-base mb-4">
+                  Finished booking your call?
+                </p>
+                <button
+                  onClick={() => {
+                    setIsBooked(true)
+                    setTimeout(() => {
+                      router.push('/thank-you')
+                    }, 500)
+                  }}
+                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border-2 border-[#b38d38] whitespace-nowrap text-white uppercase tracking-wider font-bold text-sm transition-all hover:border-[#d4af37] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)]"
+                  style={{
+                    background: 'linear-gradient(135deg, #b38d38 0%, #1a1410 50%, #0c0a05 100%)'
+                  }}
+                >
+                  Continue to Next Step →
+                </button>
+              </motion.div>
             </motion.div>
           )}
         </div>

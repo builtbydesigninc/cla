@@ -50,11 +50,8 @@ export default function Footer() {
 
         {/* CTA */}
         <div className="flex justify-center mb-12">
-          <a href="mailto:support@cliniclaunchacademy.com">
-            <ShimmerButton
-              shimmerColor="#b38d38"
-              shimmerDuration="2.5s"
-            >
+          <a href="/apply">
+            <ShimmerButton>
               <span className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
                 Contact Us

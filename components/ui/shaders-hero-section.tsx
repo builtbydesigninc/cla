@@ -86,15 +86,10 @@ export function HeroContent() {
           className="flex justify-center"
         >
           <a href="/apply">
-            <ShimmerButton
-              shimmerColor="#d4af37"
-              shimmerDuration="2.5s"
-              background="linear-gradient(to bottom right, #b38d38, #d4af37, #b38d38)"
-              className="text-2xl px-12 py-6"
-            >
-              <span className="flex items-center gap-4">
+            <ShimmerButton>
+              <span className="flex items-center gap-2">
                 Apply Now
-                <ArrowRight className="w-7 h-7" />
+                <ArrowRight className="w-4 h-4" />
               </span>
             </ShimmerButton>
           </a>
