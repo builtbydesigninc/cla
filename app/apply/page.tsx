@@ -50,7 +50,7 @@ export default function ApplyPage() {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-[1170px] mx-auto px-4 pb-20">
+        <div className="max-w-[1170px] mx-auto px-4 pb-40">
           {/* Heading Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -101,7 +101,7 @@ export default function ApplyPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center mt-16 text-white/60 text-sm"
+            className="text-center mt-32 text-white/60 text-sm"
           >
             <p>
               Copyright 2025 Clinic Launch Academy | {' '}
