@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Ensure proper scrolling */
+html {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
 @font-face {
   font-family: 'Awesome Serif';
   src: url('/Awesome Serif font/Variable Fonts/Awesome Serif Italic VAR-VF.ttf') format('truetype');

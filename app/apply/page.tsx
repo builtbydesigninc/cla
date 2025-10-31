@@ -6,6 +6,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Script from "next/script"
 import { useRouter } from "next/navigation"
+import Footer from "@/components/Footer"
 
 export default function ApplyPage() {
   const router = useRouter()
@@ -33,7 +34,7 @@ export default function ApplyPage() {
         strategy="afterInteractive"
       />
       
-      <main className="min-h-screen" style={{ backgroundColor: '#0c0a05' }}>
+      <main style={{ backgroundColor: '#0c0a05' }}>
         {/* Header with Logo */}
         <div className="py-8 px-4">
           <div className="max-w-[1160px] mx-auto">
@@ -50,7 +51,7 @@ export default function ApplyPage() {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-[1170px] mx-auto px-4 pb-20">
+        <div className="max-w-[1170px] mx-auto px-4 py-12 md:py-16">
           {/* Heading Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,34 +87,19 @@ export default function ApplyPage() {
                 background: 'rgba(179, 141, 56, 0.08)',
                 border: '1px solid rgba(179, 141, 56, 0.2)',
                 boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px 0 rgba(179, 141, 56, 0.15)',
-                minHeight: '700px'
+                height: '600px'
               }}
             >
               <div 
                 data-tf-live="01K8VYY96EZFGZA6KGPJNSR0FS"
-                style={{ width: '100%', height: '700px' }}
+                style={{ width: '100%', height: '600px' }}
               />
             </div>
           </motion.div>
-
-          {/* Footer */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center mt-16 text-white/60 text-sm"
-          >
-            <p>
-              Copyright 2025 Clinic Launch Academy | {' '}
-              <a 
-                href="/privacy" 
-                className="text-[#b38d38] hover:text-[#d4a854] transition-colors"
-              >
-                Privacy Policy
-              </a>
-            </p>
-          </motion.div>
         </div>
+
+        {/* Full Footer */}
+        <Footer />
       </main>
     </>
   )

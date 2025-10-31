@@ -87,13 +87,14 @@ export function HeroContent() {
         >
           <a href="/apply">
             <ShimmerButton
-              shimmerColor="#b38d38"
+              shimmerColor="#d4af37"
               shimmerDuration="2.5s"
-              className="text-sm"
+              background="linear-gradient(to bottom right, #b38d38, #d4af37, #b38d38)"
+              className="text-2xl px-12 py-6"
             >
-              <span className="flex items-center gap-2">
+              <span className="flex items-center gap-4">
                 Apply Now
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-7 h-7" />
               </span>
             </ShimmerButton>
           </a>
