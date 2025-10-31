@@ -43,7 +43,7 @@ export default function ThankYouPage() {
         />
       ))}
       
-      <main className="w-full" style={{ backgroundColor: '#0c0a05', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ backgroundColor: '#0c0a05' }}>
         {/* Header with Logo */}
         <div className="py-8 px-4">
           <div className="max-w-[1160px] mx-auto">
@@ -60,7 +60,7 @@ export default function ThankYouPage() {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 max-w-[1200px] mx-auto px-4 py-12 md:py-20 w-full">
+        <div className="max-w-[1200px] mx-auto px-4 py-12 md:py-16">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
