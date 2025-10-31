@@ -57,7 +57,7 @@ export default function Header() {
 
             {/* CTA Button - Far Right (Desktop Only) */}
             <a
-              href="/book"
+              href="/apply"
               className="hidden md:flex backdrop-blur-md border border-[#544629] rounded-full px-6 py-2 hover:border-[#b38d38] hover:bg-[#b38d38]/10 transition-all items-center gap-2 text-xs font-bold uppercase tracking-wider text-white"
               style={{ backgroundColor: 'rgba(84, 70, 41, 0.15)' }}
             >
@@ -84,7 +84,7 @@ export default function Header() {
               </a>
             ))}
             <a
-              href="#enroll"
+              href="/apply"
               onClick={() => setMobileMenuOpen(false)}
               className="mt-4 backdrop-blur-md border border-[#544629] rounded-full px-8 py-3 hover:border-[#b38d38] hover:bg-[#b38d38]/10 transition-all flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-white"
               style={{ backgroundColor: 'rgba(84, 70, 41, 0.15)' }}
