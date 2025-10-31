@@ -10,23 +10,23 @@ import Footer from "@/components/Footer"
 const testimonials = [
   {
     mediaId: 'g9p0h8q0yn',
-    name: 'Success Story 1',
-    stats: 'Built a thriving peptide clinic'
+    name: 'Christo',
+    stats: 'Previous: High ticket sales ($5K-$5M) ? Now: Growing every month ? "Every month is my best month ever"'
   },
   {
     mediaId: 'gyas4vakz6',
-    name: 'Success Story 2',
-    stats: 'Scaled to $100K+ monthly revenue'
+    name: 'Daniel',
+    stats: 'First client in 1 month ? 20 clients ? From $5K to $10K+/month ? Recurring commissions for years'
   },
   {
     mediaId: 'we5ko6ns9w',
-    name: 'Success Story 3',
-    stats: 'Launched clinic in 90 days'
+    name: 'Hailey',
+    stats: 'First client in 2 weeks ? Income: "Several times more" ? Paid off debt, saving for home'
   },
   {
     mediaId: 'hnc5twbzsp',
-    name: 'Success Story 4',
-    stats: 'Grew patient base by 300%'
+    name: 'Sabit',
+    stats: 'First client on Day 1 ? 100% close rate (vs 30%) ? 1 client from 20 dials ? Full calendar'
   }
 ]
 
@@ -191,10 +191,10 @@ export default function ThankYouPage() {
                     
                     {/* Info Card Below Video */}
                     <div className="p-6 text-left">
-                      <h3 className="text-xl font-bold text-white mb-2">
+                      <h3 className="text-xl font-bold text-white mb-3">
                         {testimonial.name}
                       </h3>
-                      <p className="text-[#b38d38] text-sm font-medium">
+                      <p className="text-[#b38d38] text-sm font-medium leading-relaxed">
                         {testimonial.stats}
                       </p>
                     </div>
