@@ -37,7 +37,7 @@ export default function BookPage() {
               iframe.contentWindow?.location.href.includes('confirmed')) {
             setIsBooked(true)
           }
-        } catch (e) {
+        } catch {
           // Silently fail if CORS blocks us
         }
       }
