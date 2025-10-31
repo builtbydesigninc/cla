@@ -6,6 +6,7 @@ import Image from "next/image"
 import Script from "next/script"
 import Link from "next/link"
 import { CheckCircle2, ArrowRight } from "lucide-react"
+import Footer from "@/components/Footer"
 
 export default function BookPage() {
   const [isBooked, setIsBooked] = useState(false)
@@ -74,7 +75,7 @@ export default function BookPage() {
         </div>
 
         {/* Main Content */}
-        <div className="max-w-[1170px] mx-auto px-4 pb-40">
+        <div className="max-w-[1170px] mx-auto px-4 pb-20">
           {/* Heading Section */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -192,25 +193,10 @@ export default function BookPage() {
               </button>
             </motion.div>
           )}
-
-          {/* Footer */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center mt-32 text-white/60 text-sm"
-          >
-            <p>
-              Copyright 2025 Clinic Launch Academy | {' '}
-              <a 
-                href="/privacy" 
-                className="text-[#b38d38] hover:text-[#d4a854] transition-colors"
-              >
-                Privacy Policy
-              </a>
-            </p>
-          </motion.div>
         </div>
+
+        {/* Full Footer */}
+        <Footer />
       </main>
     </>
   )
