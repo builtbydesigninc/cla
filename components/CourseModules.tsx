@@ -12,8 +12,7 @@ import {
   Compass, 
   Settings, 
   TrendingUp, 
-  PenTool,
-  type LucideIcon
+  PenTool
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ShimmerButton } from './ui/shimmer-button'
