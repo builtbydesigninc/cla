@@ -90,6 +90,14 @@ export default function RootLayout({
             alt="" />
         </noscript>
         {/* End Meta Pixel Code */}
+        
+        {/* ContentSquare Tracking */}
+        <Script 
+          src="https://t.contentsquare.net/uxa/67c77c02b8866.js" 
+          strategy="afterInteractive"
+        />
+        {/* End ContentSquare Tracking */}
+        
         {/* <Loader /> */}
         {children}
       </body>
