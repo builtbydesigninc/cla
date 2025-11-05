@@ -24,45 +24,18 @@ export default function BookPage() {
       return
     }
 
-    // Listen for booking calendar submission
+    // Listen for Calendly booking events
     const handleBookingSubmit = (event: MessageEvent) => {
       // Log all messages for debugging
       console.log('Received postMessage:', event.data)
       
-      // Check for various booking confirmation messages
-      if (event.data) {
-        const data = event.data
+      // Check for Calendly event
+      if (event.data && event.data.event) {
+        const eventName = event.data.event
         
-        // Check if it's from leadconnectorhq
-        const isLeadConnector = event.origin?.includes('leadconnectorhq.com')
-        
-        // Multiple patterns for booking confirmation
-        const isBookingConfirmed = 
-          data.type === 'booking-confirmed' || 
-          data.type === 'hsFormCallback' ||
-          data.type === 'appointment_booked' ||
-          data.type === 'submit' ||
-          data === 'booking-success' ||
-          data.eventName === 'booking.completed' ||
-          data.event === 'booking.completed' ||
-          data.status === 'confirmed' ||
-          data.status === 'booked' ||
-          data.message === 'appointment_scheduled' ||
-          (typeof data === 'string' && (
-            data.includes('booking') || 
-            data.includes('confirmed') || 
-            data.includes('scheduled') ||
-            data.includes('appointment')
-          )) ||
-          (typeof data === 'object' && (
-            data.booking || 
-            data.confirmed || 
-            data.scheduled ||
-            data.appointment
-          ))
-        
-        if (isBookingConfirmed || (isLeadConnector && data.type)) {
-          console.log('Booking confirmed! Redirecting...')
+        // Calendly sends "calendly.event_scheduled" when a booking is confirmed
+        if (eventName === 'calendly.event_scheduled') {
+          console.log('Calendly booking confirmed! Redirecting...')
           setIsBooked(true)
           // Automatically redirect to thank you page after 1.5 seconds
           setTimeout(() => {
@@ -82,7 +55,7 @@ export default function BookPage() {
   return (
     <>
       <Script 
-        src="https://api.leadconnectorhq.com/js/form_embed.js" 
+        src="https://assets.calendly.com/assets/external/widget.js" 
         type="text/javascript"
         strategy="lazyOnload"
       />
@@ -144,17 +117,13 @@ export default function BookPage() {
               }}
             >
               <div className="p-4 md:p-8">
-                <iframe 
-                  src="https://api.leadconnectorhq.com/widget/booking/StgVKa57nyEt8FKZg7Ga" 
+                <div 
+                  className="calendly-inline-widget" 
+                  data-url="https://calendly.com/cliniclaunchacademy-info/30min?hide_gdpr_banner=1" 
                   style={{ 
-                    width: '100%',
-                    border: 'none',
-                    overflow: 'hidden',
-                    height: '600px'
-                  }} 
-                  scrolling="no" 
-                  id="StgVKa57nyEt8FKZg7Ga_1761711862621"
-                  title="Booking Calendar"
+                    minWidth: '320px',
+                    height: '700px'
+                  }}
                 />
               </div>
             </div>
