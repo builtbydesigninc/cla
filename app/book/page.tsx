@@ -33,10 +33,10 @@ export default function BookPage() {
       if (event.data) {
         const data = event.data
         
-        // Check if it's from leadconnectorhq
-        const isLeadConnector = event.origin?.includes('leadconnectorhq.com')
+        // Check if it's from Cal.com
+        const isCalCom = event.origin?.includes('cal.com')
         
-        // Multiple patterns for booking confirmation
+        // Multiple patterns for booking confirmation including Cal.com events
         const isBookingConfirmed = 
           data.type === 'booking-confirmed' || 
           data.type === 'hsFormCallback' ||
@@ -48,11 +48,17 @@ export default function BookPage() {
           data.status === 'confirmed' ||
           data.status === 'booked' ||
           data.message === 'appointment_scheduled' ||
+          // Cal.com specific events
+          data === '__iframeResizer' ||
+          (typeof data === 'object' && data.event === 'linkReady') ||
+          (typeof data === 'object' && data.event === 'bookingSuccessful') ||
+          (typeof data === 'object' && data['cal:booked']) ||
           (typeof data === 'string' && (
             data.includes('booking') || 
             data.includes('confirmed') || 
             data.includes('scheduled') ||
-            data.includes('appointment')
+            data.includes('appointment') ||
+            data.includes('cal:')
           )) ||
           (typeof data === 'object' && (
             data.booking || 
@@ -61,7 +67,9 @@ export default function BookPage() {
             data.appointment
           ))
         
-        if (isBookingConfirmed || (isLeadConnector && data.type)) {
+        if ((isCalCom && data.event === 'bookingSuccessful') || 
+            (isCalCom && data['cal:booked']) ||
+            isBookingConfirmed) {
           console.log('Booking confirmed! Redirecting...')
           setIsBooked(true)
           // Automatically redirect to thank you page after 1.5 seconds
@@ -82,7 +90,7 @@ export default function BookPage() {
   return (
     <>
       <Script 
-        src="https://api.leadconnectorhq.com/js/form_embed.js" 
+        src="https://app.cal.com/embed/embed.js" 
         type="text/javascript"
         strategy="lazyOnload"
       />
@@ -144,17 +152,14 @@ export default function BookPage() {
               }}
             >
               <div className="p-4 md:p-8">
-                <iframe 
-                  src="https://api.leadconnectorhq.com/widget/booking/StgVKa57nyEt8FKZg7Ga" 
+                <div 
+                  data-cal-link="cliniclaunchacademy"
+                  data-cal-config='{"layout":"month_view"}'
                   style={{ 
                     width: '100%',
-                    border: 'none',
-                    overflow: 'hidden',
-                    height: '600px'
-                  }} 
-                  scrolling="no" 
-                  id="StgVKa57nyEt8FKZg7Ga_1761711862621"
-                  title="Booking Calendar"
+                    height: '600px',
+                    overflow: 'auto'
+                  }}
                 />
               </div>
             </div>
