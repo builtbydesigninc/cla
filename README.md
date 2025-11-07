@@ -1,4 +1,3 @@
-# Augment - The MBA for Entrepreneurs
 
 A modern, responsive landing page built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
 
