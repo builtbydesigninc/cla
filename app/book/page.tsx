@@ -164,42 +164,6 @@ export default function BookPage() {
             )}
           </AnimatePresence>
 
-          {/* Completion Prompt - Shows after booking */}
-          {!isBooked && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.5 }}
-              className="text-center mt-16"
-            >
-              <motion.div
-                className="backdrop-blur-xl rounded-2xl p-6 md:p-8 max-w-[600px] mx-auto"
-                style={{
-                  background: 'rgba(179, 141, 56, 0.08)',
-                  border: '1px solid rgba(179, 141, 56, 0.2)',
-                  boxShadow: '0 4px 24px rgba(0, 0, 0, 0.3)'
-                }}
-              >
-                <p className="text-white/80 text-base mb-4">
-                  Finished booking your call?
-                </p>
-                <button
-                  onClick={() => {
-                    setIsBooked(true)
-                    setTimeout(() => {
-                      router.push('/thank-you')
-                    }, 500)
-                  }}
-                  className="inline-flex items-center justify-center px-8 py-3.5 rounded-full border-2 border-[#b38d38] whitespace-nowrap text-white uppercase tracking-wider font-bold text-sm transition-all hover:border-[#d4af37] hover:shadow-[0_0_30px_rgba(212,175,55,0.5)]"
-                  style={{
-                    background: 'linear-gradient(135deg, #b38d38 0%, #1a1410 50%, #0c0a05 100%)'
-                  }}
-                >
-                  Continue to Next Step →
-                </button>
-              </motion.div>
-            </motion.div>
-          )}
         </div>
 
         {/* Full Footer */}
