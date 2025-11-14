@@ -24,18 +24,20 @@ export default function BookPage() {
       return
     }
 
-    // Listen for Calendly booking events
+    // Listen for booking events
     const handleBookingSubmit = (event: MessageEvent) => {
       // Log all messages for debugging
       console.log('Received postMessage:', event.data)
       
-      // Check for Calendly event
+      // Check for booking confirmation from LeadConnector widget
       if (event.data && event.data.event) {
         const eventName = event.data.event
         
-        // Calendly sends "calendly.event_scheduled" when a booking is confirmed
-        if (eventName === 'calendly.event_scheduled') {
-          console.log('Calendly booking confirmed! Redirecting...')
+        // Handle various booking confirmation events
+        if (eventName === 'calendly.event_scheduled' || 
+            eventName === 'booking.scheduled' ||
+            eventName === 'appointment.scheduled') {
+          console.log('Booking confirmed! Redirecting...')
           setIsBooked(true)
           // Automatically redirect to thank you page after 1.5 seconds
           setTimeout(() => {
@@ -55,7 +57,7 @@ export default function BookPage() {
   return (
     <>
       <Script 
-        src="https://assets.calendly.com/assets/external/widget.js" 
+        src="https://api.leadconnectorhq.com/js/form_embed.js" 
         type="text/javascript"
         strategy="lazyOnload"
       />
@@ -117,13 +119,16 @@ export default function BookPage() {
               }}
             >
               <div className="p-4 md:p-8">
-                <div 
-                  className="calendly-inline-widget" 
-                  data-url="https://calendly.com/cliniclaunchacademy-info/30min?hide_gdpr_banner=1" 
+                <iframe 
+                  src="https://api.leadconnectorhq.com/widget/booking/aCrwOQdGhLa8BDMeoiLT" 
                   style={{ 
-                    minWidth: '320px',
-                    height: '700px'
-                  }}
+                    width: '100%',
+                    border: 'none',
+                    overflow: 'hidden',
+                    minHeight: '700px'
+                  }} 
+                  scrolling="no" 
+                  id="aCrwOQdGhLa8BDMeoiLT_1763144565968"
                 />
               </div>
             </div>
