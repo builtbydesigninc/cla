@@ -29,7 +29,7 @@ export function HeroContent() {
       <Script src="https://fast.wistia.com/player.js" async />
       <Script src="https://fast.wistia.com/embed/ksp056szgv.js" async type="module" />
       
-      <main className="relative z-20 flex items-center justify-center min-h-screen px-8 pt-32 md:pt-40 pb-20 md:pb-32">
+      <main className="relative z-20 flex items-center justify-center min-h-screen px-4 md:px-8 pt-32 md:pt-40 pb-20 md:pb-32">
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -51,7 +51,7 @@ export function HeroContent() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.7 }}
-          className="relative rounded-2xl overflow-hidden backdrop-blur-sm border-2 border-[#544629] shadow-2xl shadow-[#b38d38]/20 mb-6 md:mb-8 max-w-4xl mx-auto"
+          className="relative rounded-xl md:rounded-2xl overflow-hidden backdrop-blur-sm border-2 border-[#544629] shadow-2xl shadow-[#b38d38]/20 mb-6 md:mb-8 w-full md:max-w-4xl mx-auto"
           style={{ backgroundColor: 'rgba(84, 70, 41, 0.1)' }}
           dangerouslySetInnerHTML={{
             __html: `
