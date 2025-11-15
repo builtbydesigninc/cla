@@ -157,7 +157,7 @@ export default function ThankYouPage() {
               </p>
 
               {/* Testimonials Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[1100px] mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-[1100px] mx-auto px-2 md:px-0">
                 {testimonials.map((testimonial, index) => (
                   <motion.div
                     key={testimonial.mediaId}
