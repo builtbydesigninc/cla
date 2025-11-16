@@ -57,7 +57,7 @@ export default function BookPage() {
   return (
     <>
       <Script 
-        src="https://api.leadconnectorhq.com/js/form_embed.js" 
+        src="https://assets.calendly.com/assets/external/widget.js" 
         type="text/javascript"
         strategy="lazyOnload"
       />
@@ -119,16 +119,13 @@ export default function BookPage() {
               }}
             >
               <div className="p-4 md:p-8">
-                <iframe 
-                  src="https://api.leadconnectorhq.com/widget/booking/aCrwOQdGhLa8BDMeoiLT" 
+                <div 
+                  className="calendly-inline-widget" 
+                  data-url="https://calendly.com/cliniclaunchacademy-info/30min" 
                   style={{ 
-                    width: '100%',
-                    border: 'none',
-                    overflow: 'hidden',
-                    minHeight: '700px'
-                  }} 
-                  scrolling="no" 
-                  id="aCrwOQdGhLa8BDMeoiLT_1763144565968"
+                    minWidth: '320px',
+                    height: '700px'
+                  }}
                 />
               </div>
             </div>
