@@ -57,7 +57,7 @@ export default function BookPage() {
   return (
     <>
       <Script 
-        src="https://assets.calendly.com/assets/external/widget.js" 
+        src="https://link.msgsndr.com/js/form_embed.js" 
         type="text/javascript"
         strategy="lazyOnload"
       />
@@ -119,13 +119,15 @@ export default function BookPage() {
               }}
             >
               <div className="p-4 md:p-8">
-                <div 
-                  className="calendly-inline-widget" 
-                  data-url="https://calendly.com/cliniclaunchacademy-info/30min" 
+                <iframe 
+                  src="https://api.leadconnectorhq.com/widget/booking/cB9kmm5zvipArYXOFtCC" 
                   style={{ 
+                    width: '100%',
                     minWidth: '320px',
-                    height: '700px'
+                    height: '700px',
+                    border: 'none'
                   }}
+                  scrolling="no"
                 />
               </div>
             </div>
