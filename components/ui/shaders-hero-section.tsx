@@ -27,7 +27,7 @@ export function HeroContent() {
     <>
       {/* Wistia Scripts */}
       <Script src="https://fast.wistia.com/player.js" async />
-      <Script src="https://fast.wistia.com/embed/ksp056szgv.js" async type="module" />
+      <Script src="https://fast.wistia.com/embed/qg7jvltl1c.js" async type="module" />
       
       <main className="relative z-20 flex items-center justify-center min-h-screen px-4 md:px-8 pt-32 md:pt-40 pb-20 md:pb-32">
         <motion.div
@@ -56,14 +56,14 @@ export function HeroContent() {
           dangerouslySetInnerHTML={{
             __html: `
               <style>
-                wistia-player[media-id='ksp056szgv']:not(:defined) { 
-                  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/ksp056szgv/swatch'); 
+                wistia-player[media-id='qg7jvltl1c']:not(:defined) { 
+                  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/qg7jvltl1c/swatch'); 
                   display: block; 
                   filter: blur(5px); 
                   padding-top: 56.25%; 
                 }
               </style>
-              <wistia-player media-id="ksp056szgv" aspect="1.7777777777777777"></wistia-player>
+              <wistia-player media-id="qg7jvltl1c" aspect="1.7777777777777777"></wistia-player>
             `
           }}
         />
