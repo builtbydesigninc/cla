@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Users, Network, Phone, BookOpen, ArrowRight } from "lucide-react"
+import { Users, Network, Phone, BookOpen, ArrowRight, Megaphone, Smartphone, Monitor } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 import { MagicCard } from "@/components/ui/magic-card"
 import { motion, AnimatePresence } from "framer-motion"
@@ -49,17 +49,6 @@ export default function WhyCLA() {
 
   const tabs = [
     {
-      value: "closing-team",
-      icon: <Users className="h-4 w-4" />,
-      iconLarge: <Users className="w-16 h-16 text-[#b38d38]/20" />,
-      label: "Closing Team",
-      content: {
-        badge: "Done-For-You",
-        title: "Elite Closing Team",
-        description: "World-class sales professionals close deals for you. Your job: make the connection.",
-      },
-    },
-    {
       value: "network",
       icon: <Network className="h-4 w-4" />,
       iconLarge: <Network className="w-16 h-16 text-[#b38d38]/20" />,
@@ -68,6 +57,50 @@ export default function WhyCLA() {
         badge: "Plug & Play",
         title: "Peptide Distribution Network",
         description: "Exclusive multi-million dollar supply chain. Vetted suppliers, licensed pharmacies, pre-negotiated pricing.",
+      },
+    },
+    {
+      value: "closing-team",
+      icon: <Users className="h-4 w-4" />,
+      iconLarge: <Users className="w-16 h-16 text-[#b38d38]/20" />,
+      label: "DFY Closing",
+      content: {
+        badge: "Done-For-You",
+        title: "Elite Closing Team",
+        description: "World-class sales professionals close deals for you. Your job: make the connection. We handle the conversion.",
+      },
+    },
+    {
+      value: "marketing",
+      icon: <Megaphone className="h-4 w-4" />,
+      iconLarge: <Megaphone className="w-16 h-16 text-[#b38d38]/20" />,
+      label: "DFY Marketing",
+      content: {
+        badge: "Client Acquisition",
+        title: "Paid Ads & Marketing Engine",
+        description: "We handle the ad spend, creatives, and targeting. A fully managed paid traffic system delivering qualified leads directly to your pipeline.",
+      },
+    },
+    {
+      value: "tech-stack",
+      icon: <Monitor className="h-4 w-4" />,
+      iconLarge: <Monitor className="w-16 h-16 text-[#b38d38]/20" />,
+      label: "DFY Tech Stack",
+      content: {
+        badge: "Turnkey Systems",
+        title: "Complete Tech Ecosystem",
+        description: "Websites, CRM, and Automation—built and integrated for you. A high-converting digital infrastructure ready to launch from day one.",
+      },
+    },
+    {
+      value: "mobile-app",
+      icon: <Smartphone className="h-4 w-4" />,
+      iconLarge: <Smartphone className="w-16 h-16 text-[#b38d38]/20" />,
+      label: "Client App",
+      content: {
+        badge: "Patient Management",
+        title: "Branded Mobile App",
+        description: "Manage your clinic from your pocket. A dedicated mobile application for tracking patient progress, scheduling, and seamless communication.",
       },
     },
     {

@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react"
 import Script from "next/script"
 import { ShimmerButton } from "./shimmer-button"
 import { AuroraBackground } from "./aurora-background"
+import { UrgencyBadge } from "./urgency-badge"
 
 
 interface ShaderBackgroundProps {
@@ -36,6 +37,11 @@ export function HeroContent() {
           transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
           className="text-center max-w-5xl"
         >
+        {/* Urgency Badge - Above Title */}
+        <div className="flex justify-center mb-6">
+          <UrgencyBadge variant="hero" spotsFilled={87} totalSpots={100} />
+        </div>
+
         {/* Kickass Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

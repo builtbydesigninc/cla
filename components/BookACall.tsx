@@ -3,6 +3,7 @@
 import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { ShimmerButton } from './ui/shimmer-button'
+import { UrgencyBadge } from './ui/urgency-badge'
 
 export default function ApplicationOnly() {
   return (
@@ -45,12 +46,16 @@ export default function ApplicationOnly() {
             </a>
           </div>
 
-          {/* Minimal Note */}
-          <div className="mt-12">
-            <p className="text-white/50 text-sm">
-              Limited spots available
-            </p>
-          </div>
+          {/* Urgency Badge */}
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="mt-12 flex justify-center"
+          >
+            <UrgencyBadge variant="compact" spotsFilled={87} totalSpots={100} />
+          </motion.div>
         </motion.div>
       </div>
     </section>
