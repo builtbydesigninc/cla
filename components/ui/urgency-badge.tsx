@@ -1,7 +1,6 @@
 'use client'
 
-import { motion, useSpring, useTransform, useMotionValue, animate } from 'framer-motion'
-import { Users } from 'lucide-react'
+import { motion, useTransform, useMotionValue, animate } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 interface UrgencyBadgeProps {
