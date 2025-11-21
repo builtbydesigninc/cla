@@ -1,6 +1,7 @@
 'use client'
 
 import { Facebook, Instagram, Linkedin, Twitter, Youtube, Mail } from 'lucide-react'
+import Image from 'next/image'
 import { ShimmerButton } from './ui/shimmer-button'
 
 export default function Footer() {
@@ -12,8 +13,8 @@ export default function Footer() {
       { name: 'Guarantee', href: '#guarantee' },
     ],
     legal: [
-      { name: 'Terms and Conditions', href: '#' },
-      { name: 'Privacy Policy', href: '#' },
+      { name: 'Terms and Conditions', href: '/terms-app' },
+      { name: 'Privacy Policy', href: '/privacy-app' },
     ],
   }
 
@@ -30,7 +31,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20">
         {/* Logo - Large & Centered */}
         <div className="flex justify-center mb-12">
-          <img src="/cla-logo.png" alt="CLA" className="h-24 w-auto" />
+          <Image 
+            src="/cla-logo.png" 
+            alt="CLA" 
+            width={144} 
+            height={96} 
+            className="h-24 w-auto" 
+          />
         </div>
 
         {/* Social Icons */}

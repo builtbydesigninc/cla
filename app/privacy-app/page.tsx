@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
           <p className="font-bold">Clinic Launch Academy Mobile App</p>
           <p>Last Updated: November 19, 2025</p>
           
-          <p>This Privacy Policy describes how Clinic Launch Academy ("CLA", "we", "us", or "our") collects, uses, stores, and protects information when you use the Clinic Launch Academy Mobile App ("the App"), a customized and white-labeled version of the GoHighLevel ("GHL") platform.</p>
+          <p>This Privacy Policy describes how Clinic Launch Academy (&quot;CLA&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) collects, uses, stores, and protects information when you use the Clinic Launch Academy Mobile App (&quot;the App&quot;), a customized and white-labeled version of the GoHighLevel (&quot;GHL&quot;) platform.</p>
           
           <p>By accessing or using the App, you agree to the practices described in this Privacy Policy.</p>
           
@@ -207,7 +207,7 @@ export default function PrivacyPolicy() {
             <li>Location services are only used with your consent</li>
           </ul>
 
-          <h2 className="text-2xl font-bold mt-8 mb-4">11. Children's Privacy</h2>
+          <h2 className="text-2xl font-bold mt-8 mb-4">11. Children&apos;s Privacy</h2>
           <p>The App is not intended for individuals under 18 years of age. We do not knowingly collect information from minors. If you believe a minor has provided information, please contact us immediately.</p>
 
           <h2 className="text-2xl font-bold mt-8 mb-4">12. International Data Transfers</h2>
@@ -236,4 +236,3 @@ export default function PrivacyPolicy() {
     </main>
   )
 }
-

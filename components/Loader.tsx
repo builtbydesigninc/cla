@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 const Loader = () => {
   return (
@@ -22,10 +23,13 @@ const Loader = () => {
       id="cla-loader"
     >
       <div className="relative px-4">
-        <img 
+        <Image 
           src="/cla-logo.png" 
           alt="CLA" 
+          width={192} 
+          height={128}
           className="h-20 sm:h-24 md:h-32 w-auto relative z-10 max-w-[90vw]"
+          priority
         />
         
         {/* Scanner effect - Gold */}
@@ -50,4 +54,3 @@ const Loader = () => {
 }
 
 export default Loader
-

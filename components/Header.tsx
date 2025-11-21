@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { ArrowRight, Menu, X } from 'lucide-react'
+import Image from 'next/image'
 import GlassSurface from './ui/GlassSurface'
 
 export default function Header() {
@@ -30,7 +31,14 @@ export default function Header() {
           <div className="flex items-center justify-between w-full px-6 md:px-8 h-full">
             {/* Logo - Far Left */}
             <div className="flex items-center">
-              <img src="/cla-logo.png" alt="CLA" className="h-8 w-auto" />
+              <Image 
+                src="/cla-logo.png" 
+                alt="CLA" 
+                width={48} 
+                height={32} 
+                className="h-8 w-auto" 
+                priority
+              />
             </div>
 
             {/* Navigation - Center (Desktop Only) */}

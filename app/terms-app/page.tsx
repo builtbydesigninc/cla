@@ -12,7 +12,7 @@ export default function TermsConditions() {
           <p className="font-bold">Clinic Launch Academy Mobile App</p>
           <p>Last Updated: November 19, 2025</p>
           
-          <p>Welcome to the Clinic Launch Academy Mobile App ("the App"), a proprietary white-label version of the GoHighLevel ("GHL") platform with additional features, tools, automations, training modules, CRM enhancements, and resources provided by Clinic Launch Academy ("CLA", "we", "our", "us").</p>
+          <p>Welcome to the Clinic Launch Academy Mobile App (&quot;the App&quot;), a proprietary white-label version of the GoHighLevel (&quot;GHL&quot;) platform with additional features, tools, automations, training modules, CRM enhancements, and resources provided by Clinic Launch Academy (&quot;CLA&quot;, &quot;we&quot;, &quot;our&quot;, &quot;us&quot;).</p>
           
           <div className="bg-yellow-900/30 border border-yellow-500/30 p-4 rounded-lg">
             <p className="font-bold text-yellow-200">IMPORTANT: This App is a business management tool for facilitating B2B connections in the healthcare industry. It is not a medical device, diagnostic tool, or patient care system.</p>
@@ -170,7 +170,7 @@ export default function TermsConditions() {
 
           <h2 className="text-2xl font-bold mt-8 mb-4">12. Disclaimers</h2>
           <div className="uppercase">
-            <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:</p>
+            <p>THE APP IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:</p>
             <ul className="list-disc pl-6 space-y-1">
               <li>MERCHANTABILITY</li>
               <li>FITNESS FOR A PARTICULAR PURPOSE</li>
@@ -247,8 +247,8 @@ export default function TermsConditions() {
           <h2 className="text-2xl font-bold mt-8 mb-4">20. General Provisions</h2>
           <ul className="list-disc pl-6 space-y-1">
             <li>Entire Agreement: These Terms constitute the complete agreement</li>
-            <li>Severability: Invalid provisions don't affect remaining Terms</li>
-            <li>No Waiver: Failure to enforce doesn't waive rights</li>
+            <li>Severability: Invalid provisions don&apos;t affect remaining Terms</li>
+            <li>No Waiver: Failure to enforce doesn&apos;t waive rights</li>
             <li>Assignment: You may not assign these Terms</li>
             <li>Notices: Communications should be sent to the contact information below</li>
           </ul>
@@ -269,4 +269,3 @@ export default function TermsConditions() {
     </main>
   )
 }
-

@@ -2,6 +2,7 @@
 
 import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { ShimmerButton } from './ui/shimmer-button'
 import { UrgencyBadge } from './ui/urgency-badge'
 
@@ -21,7 +22,13 @@ export default function ApplicationOnly() {
         >
           {/* CLA Logo */}
           <div className="mb-12 flex justify-center">
-            <img src="/cla-logo.png" alt="CLA" className="h-20 w-auto opacity-80" />
+            <Image 
+              src="/cla-logo.png" 
+              alt="CLA" 
+              width={120} 
+              height={80} 
+              className="h-20 w-auto opacity-80" 
+            />
           </div>
 
           <motion.h2

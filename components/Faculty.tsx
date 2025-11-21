@@ -2,6 +2,7 @@
 
 import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { ShimmerButton } from './ui/shimmer-button'
 
 const teamMembers = [
@@ -98,10 +99,12 @@ export default function Faculty() {
                 whileHover={{ scale: 1.02 }}
                 className="group relative bg-gray-900 rounded-lg overflow-hidden aspect-[3/4] cursor-pointer"
               >
-                <img
+                <Image
                   src={member.imageUrl}
                   alt={`${member.name} ${member.lastName}`}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                 />
                 
                 {/* Content Overlay */}
