@@ -120,14 +120,14 @@ export default function BookPage() {
             >
               <div className="p-4 md:p-8">
                 <iframe 
-                  src="https://api.leadconnectorhq.com/widget/booking/cB9kmm5zvipArYXOFtCC" 
+                  src="https://api.leadconnectorhq.com/widget/booking/bkksPA6IoIp9x17xTFZB" 
                   style={{ 
                     width: '100%',
-                    minWidth: '320px',
-                    height: '700px',
-                    border: 'none'
+                    border: 'none',
+                    overflow: 'hidden'
                   }}
                   scrolling="no"
+                  id="bkksPA6IoIp9x17xTFZB_1763750405522"
                 />
               </div>
             </div>
