@@ -13,6 +13,12 @@ const teamMembers = [
     imageUrl: '/headshots/mark.png',
   },
   {
+    name: 'Parth',
+    lastName: 'Gogia',
+    description: 'CEO and Founder',
+    imageUrl: '/headshots/Parth.png',
+  },
+  {
     name: 'Ash',
     lastName: 'Rahman',
     description: 'Outreach Expert',
