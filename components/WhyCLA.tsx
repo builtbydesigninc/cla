@@ -179,7 +179,7 @@ export default function WhyCLA() {
             viewport={{ once: true }}
             className="text-xl text-white/70 max-w-2xl"
           >
-            Everything you need to build a six or seven-figure peptide facilitation business.
+            Everything you need to build a six or seven-figure peptide facilitation business. 
           </motion.p>
         </div>
         
