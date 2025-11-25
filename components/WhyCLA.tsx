@@ -7,46 +7,9 @@ import { Badge } from "@/components/ui/badge"
 import { MagicCard } from "@/components/ui/magic-card"
 import { motion, AnimatePresence } from "framer-motion"
 import { ShimmerButton } from "./ui/shimmer-button"
+import Image from "next/image"
 
 export default function WhyCLA() {
-  const [activeTab, setActiveTab] = useState(0)
-  const [userInteracted, setUserInteracted] = useState(false)
-  const timerRef = useRef<NodeJS.Timeout | null>(null)
-  // Auto-scroll effect
-  useEffect(() => {
-    const startAutoScroll = () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-      
-      timerRef.current = setInterval(() => {
-        if (!userInteracted) {
-          setActiveTab((prev) => (prev + 1) % tabs.length)
-        }
-      }, 4000) // Change tab every 4 seconds
-    }
-
-    startAutoScroll()
-
-    return () => {
-      if (timerRef.current) clearInterval(timerRef.current)
-    }
-  }, [userInteracted])
-
-  // Reset user interaction after 10 seconds of no activity
-  useEffect(() => {
-    if (userInteracted) {
-      const timeout = setTimeout(() => {
-        setUserInteracted(false)
-      }, 10000)
-      
-      return () => clearTimeout(timeout)
-    }
-  }, [userInteracted, activeTab])
-
-  const handleTabChange = (index: number) => {
-    setActiveTab(index)
-    setUserInteracted(true)
-  }
-
   const tabs = [
     {
       value: "network",
@@ -57,6 +20,42 @@ export default function WhyCLA() {
         badge: "Plug & Play",
         title: "Peptide Distribution Network",
         description: "Exclusive multi-million dollar supply chain. Vetted suppliers, licensed pharmacies, pre-negotiated pricing.",
+      },
+    },
+    {
+      value: "mobile-app",
+      icon: <Smartphone className="h-4 w-4" />,
+      iconLarge: <Smartphone className="w-16 h-16 text-[#b38d38]/20" />,
+      label: "Client App",
+      content: {
+        badge: "Client Management",
+        title: "CLA+ Mobile Platform",
+        description: "Complete client management system at your fingertips. Track contacts, manage relationships, schedule appointments, and stay organized—all from a powerful mobile app built for connectors.",
+        image: "/mockups/cla-plus.png",
+      },
+    },
+    {
+      value: "tech-stack",
+      icon: <Monitor className="h-4 w-4" />,
+      iconLarge: <Monitor className="w-16 h-16 text-[#b38d38]/20" />,
+      label: "DFY Tech Stack",
+      content: {
+        badge: "Built For You",
+        title: "Your Personal Tech Ecosystem",
+        description: "We hand you a complete course platform, CRM, and automation system—fully set up and ready to use. No building, no integrations, no headaches. Just log in and start scaling.",
+        image: "/mockups/course-mobile-laptop.png",
+      },
+    },
+    {
+      value: "programs",
+      icon: <BookOpen className="h-4 w-4" />,
+      iconLarge: <BookOpen className="w-16 h-16 text-[#b38d38]/20" />,
+      label: "Course Platform",
+      content: {
+        badge: "Learning Hub",
+        title: "Professional Course Dashboard",
+        description: "Access your complete training library, track your progress, and engage with the community. A premium learning experience designed to accelerate your success.",
+        image: "/mockups/programs.png",
       },
     },
     {
@@ -82,28 +81,6 @@ export default function WhyCLA() {
       },
     },
     {
-      value: "tech-stack",
-      icon: <Monitor className="h-4 w-4" />,
-      iconLarge: <Monitor className="w-16 h-16 text-[#b38d38]/20" />,
-      label: "DFY Tech Stack",
-      content: {
-        badge: "Turnkey Systems",
-        title: "Complete Tech Ecosystem",
-        description: "Websites, CRM, and Automation—built and integrated for you. A high-converting digital infrastructure ready to launch from day one.",
-      },
-    },
-    {
-      value: "mobile-app",
-      icon: <Smartphone className="h-4 w-4" />,
-      iconLarge: <Smartphone className="w-16 h-16 text-[#b38d38]/20" />,
-      label: "Client App",
-      content: {
-        badge: "Patient Management",
-        title: "Branded Mobile App",
-        description: "Manage your clinic from your pocket. A dedicated mobile application for tracking patient progress, scheduling, and seamless communication.",
-      },
-    },
-    {
       value: "mentorship",
       icon: <Phone className="h-4 w-4" />,
       iconLarge: <Phone className="w-16 h-16 text-[#b38d38]/20" />,
@@ -126,6 +103,45 @@ export default function WhyCLA() {
       },
     },
   ]
+
+  const [activeTab, setActiveTab] = useState(0)
+  const [userInteracted, setUserInteracted] = useState(false)
+  const timerRef = useRef<NodeJS.Timeout | null>(null)
+  
+  // Auto-scroll effect
+  useEffect(() => {
+    const startAutoScroll = () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+      
+      timerRef.current = setInterval(() => {
+        if (!userInteracted) {
+          setActiveTab((prev) => (prev + 1) % tabs.length)
+        }
+      }, 4000) // Change tab every 4 seconds
+    }
+
+    startAutoScroll()
+
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current)
+    }
+  }, [userInteracted, tabs.length])
+
+  // Reset user interaction after 10 seconds of no activity
+  useEffect(() => {
+    if (userInteracted) {
+      const timeout = setTimeout(() => {
+        setUserInteracted(false)
+      }, 10000)
+      
+      return () => clearTimeout(timeout)
+    }
+  }, [userInteracted, activeTab])
+
+  const handleTabChange = (index: number) => {
+    setActiveTab(index)
+    setUserInteracted(true)
+  }
 
   return (
     <section className="py-20 md:py-32 border-y overflow-hidden relative" style={{ backgroundColor: '#0c0a05', borderColor: '#544629' }}>
@@ -236,48 +252,101 @@ export default function WhyCLA() {
                         className="absolute top-0 right-0 w-40 h-40 bg-[#b38d38]/10 rounded-full blur-3xl pointer-events-none" 
                       />
                       
-                      <div className="flex items-start justify-between gap-8">
-                        {/* Left: Content with staggered animations */}
-                        <div className="flex flex-col gap-6 flex-1">
-                          <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: 0.1 }}
-                          >
-                            <Badge variant="outline" className="bg-[#b38d38] text-[#0c0a05] border-[#7e5a00] font-semibold w-fit">
-                              {tab.content.badge}
-                            </Badge>
-                          </motion.div>
-                          
-                          <motion.h3 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-3xl md:text-4xl font-light text-white"
-                          >
-                            {tab.content.title}
-                          </motion.h3>
-                          
-                          <motion.p 
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: 0.3 }}
-                            className="text-white/70 text-base max-w-md leading-relaxed"
-                          >
-                            {tab.content.description}
-                          </motion.p>
-                        </div>
+                      {tab.content.image ? (
+                        // Layout with Image
+                        <div className="flex flex-col gap-8">
+                          {/* Content */}
+                          <div className="flex flex-col gap-6">
+                            <motion.div
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 0.1 }}
+                            >
+                              <Badge variant="outline" className="bg-[#b38d38] text-[#0c0a05] border-[#7e5a00] font-semibold w-fit">
+                                {tab.content.badge}
+                              </Badge>
+                            </motion.div>
+                            
+                            <motion.h3 
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: 0.2 }}
+                              className="text-3xl md:text-4xl font-light text-white"
+                            >
+                              {tab.content.title}
+                            </motion.h3>
+                            
+                            <motion.p 
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: 0.3 }}
+                              className="text-white/70 text-base leading-relaxed"
+                            >
+                              {tab.content.description}
+                            </motion.p>
+                          </div>
 
-                        {/* Right: Icon with rotation animation */}
-                        <motion.div 
-                          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                          transition={{ duration: 0.6, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-                          className="hidden md:flex items-center justify-center"
-                        >
-                          {tab.iconLarge}
-                        </motion.div>
-                      </div>
+                          {/* Image */}
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
+                            className="relative w-full h-[300px] md:h-[400px] rounded-xl overflow-hidden border border-[#544629]/50"
+                          >
+                            <Image
+                              src={tab.content.image}
+                              alt={tab.content.title}
+                              fill
+                              className="object-contain"
+                              sizes="(max-width: 768px) 100vw, 896px"
+                            />
+                          </motion.div>
+                        </div>
+                      ) : (
+                        // Original Layout without Image
+                        <div className="flex items-start justify-between gap-8">
+                          {/* Left: Content with staggered animations */}
+                          <div className="flex flex-col gap-6 flex-1">
+                            <motion.div
+                              initial={{ opacity: 0, x: -20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.5, delay: 0.1 }}
+                            >
+                              <Badge variant="outline" className="bg-[#b38d38] text-[#0c0a05] border-[#7e5a00] font-semibold w-fit">
+                                {tab.content.badge}
+                              </Badge>
+                            </motion.div>
+                            
+                            <motion.h3 
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: 0.2 }}
+                              className="text-3xl md:text-4xl font-light text-white"
+                            >
+                              {tab.content.title}
+                            </motion.h3>
+                            
+                            <motion.p 
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ duration: 0.5, delay: 0.3 }}
+                              className="text-white/70 text-base max-w-md leading-relaxed"
+                            >
+                              {tab.content.description}
+                            </motion.p>
+                          </div>
+
+                          {/* Right: Icon with rotation animation */}
+                          <motion.div 
+                            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+                            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                            transition={{ duration: 0.6, delay: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
+                            className="hidden md:flex items-center justify-center"
+                          >
+                            {tab.iconLarge}
+                          </motion.div>
+                        </div>
+                      )}
                     </MagicCard>
                   </motion.div>
                 ) : null

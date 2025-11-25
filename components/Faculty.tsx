@@ -16,7 +16,7 @@ const teamMembers = [
     name: 'Parth',
     lastName: 'Gogia',
     description: 'CEO and Founder',
-    imageUrl: '/headshots/Parth.png',
+    imageUrl: '/headshots/parth.png',
   },
   {
     name: 'Ash',
