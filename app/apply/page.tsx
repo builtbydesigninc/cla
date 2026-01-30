@@ -12,25 +12,25 @@ export default function ApplyPage() {
   const router = useRouter()
 
   useEffect(() => {
-    // Listen for typeform submission
-    const handleTypeformSubmit = (event: MessageEvent) => {
-      if (event.data?.type === 'form-submit') {
-        // Redirect to booking page after typeform submission
+    // Listen for survey submission
+    const handleSurveySubmit = (event: MessageEvent) => {
+      if (event.data?.type === 'form-submit' || event.data?.type === 'survey-submit') {
+        // Redirect to booking page after survey submission
         router.push('/book')
       }
     }
 
-    window.addEventListener('message', handleTypeformSubmit)
+    window.addEventListener('message', handleSurveySubmit)
 
     return () => {
-      window.removeEventListener('message', handleTypeformSubmit)
+      window.removeEventListener('message', handleSurveySubmit)
     }
   }, [router])
 
   return (
     <>
       <Script 
-        src="//embed.typeform.com/next/embed.js" 
+        src="https://links.cliniclaunchacademy.com/js/form_embed.js" 
         strategy="afterInteractive"
       />
       
@@ -87,12 +87,15 @@ export default function ApplyPage() {
                 background: 'rgba(179, 141, 56, 0.08)',
                 border: '1px solid rgba(179, 141, 56, 0.2)',
                 boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px 0 rgba(179, 141, 56, 0.15)',
-                height: '600px'
+                minHeight: '600px'
               }}
             >
-              <div 
-                data-tf-live="01KA0H9F7PNC84VGQBHQ31J5GX"
-                style={{ width: '100%', height: '600px' }}
+              <iframe 
+                src="https://links.cliniclaunchacademy.com/widget/survey/27TLEKVOGcpmEj5tONZv"
+                style={{ border: 'none', width: '100%', minHeight: '600px' }}
+                scrolling="no"
+                id="27TLEKVOGcpmEj5tONZv"
+                title="survey"
               />
             </div>
           </motion.div>
