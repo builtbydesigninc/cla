@@ -31,12 +31,6 @@ const teamMembers = [
     imageUrl: '/headshots/Oliver Ibrahim.png',
   },
   {
-    name: 'Muhammad',
-    lastName: 'Bin Sohail',
-    description: 'Technology Lead',
-    imageUrl: '/headshots/Muhammad Bin Sohail.png',
-  },
-  {
     name: 'Jimmy',
     lastName: 'Abou El Ezz',
     description: 'Closing Specialist',
@@ -119,7 +113,7 @@ export default function Faculty() {
                     <p className="text-sm sm:text-base md:text-lg font-light text-white uppercase tracking-wide whitespace-nowrap">
                       {member.name}
                     </p>
-                    <p className={`${member.lastName === 'Bin Sohail' ? 'text-xs sm:text-sm md:text-base' : 'text-sm sm:text-base md:text-lg'} font-extrabold text-white uppercase tracking-wide whitespace-nowrap`}>
+                    <p className="text-sm sm:text-base md:text-lg font-extrabold text-white uppercase tracking-wide whitespace-nowrap">
                       {member.lastName}
                     </p>
                   </div>
