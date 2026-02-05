@@ -26,9 +26,8 @@ export function ShaderBackground({ children }: ShaderBackgroundProps) {
 export function HeroContent() {
   return (
     <>
-      {/* Wistia Scripts */}
-      <Script src="https://fast.wistia.com/player.js" async />
-      <Script src="https://fast.wistia.com/embed/qg7jvltl1c.js" async type="module" />
+      {/* Vimeo Script */}
+      <Script src="https://player.vimeo.com/api/player.js" async />
       
       <main className="relative z-20 flex items-center justify-center min-h-screen px-4 md:px-8 pt-32 md:pt-40 pb-20 md:pb-32">
         <motion.div
@@ -58,21 +57,17 @@ export function HeroContent() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.7 }}
           className="relative rounded-xl md:rounded-2xl overflow-hidden backdrop-blur-sm border-2 border-[#544629] shadow-2xl shadow-[#b38d38]/20 mb-6 md:mb-8 w-full md:max-w-4xl mx-auto"
-          style={{ backgroundColor: 'rgba(84, 70, 41, 0.1)' }}
-          dangerouslySetInnerHTML={{
-            __html: `
-              <style>
-                wistia-player[media-id='qg7jvltl1c']:not(:defined) { 
-                  background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/qg7jvltl1c/swatch'); 
-                  display: block; 
-                  filter: blur(5px); 
-                  padding-top: 56.25%; 
-                }
-              </style>
-              <wistia-player media-id="qg7jvltl1c" aspect="1.7777777777777777"></wistia-player>
-            `
-          }}
-        />
+          style={{ backgroundColor: 'rgba(84, 70, 41, 0.1)', padding: '56.25% 0 0 0', position: 'relative' }}
+        >
+          <iframe 
+            src="https://player.vimeo.com/video/1162106158?badge=0&autopause=0&player_id=0&app_id=58479" 
+            frameBorder="0" 
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+            referrerPolicy="strict-origin-when-cross-origin" 
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} 
+            title="VSL - Version.2"
+          />
+        </motion.div>
 
         {/* Subtle Tagline */}
         <motion.p
