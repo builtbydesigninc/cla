@@ -57,7 +57,7 @@ export default function BookPage() {
   return (
     <>
       <Script 
-        src="https://link.msgsndr.com/js/form_embed.js" 
+        src="https://links.cliniclaunchacademy.com/js/form_embed.js" 
         type="text/javascript"
         strategy="lazyOnload"
       />
@@ -120,14 +120,14 @@ export default function BookPage() {
             >
               <div className="p-4 md:p-8">
                 <iframe 
-                  src="https://api.leadconnectorhq.com/widget/booking/bkksPA6IoIp9x17xTFZB" 
+                  src="https://links.cliniclaunchacademy.com/widget/booking/bkksPA6IoIp9x17xTFZB" 
                   style={{ 
                     width: '100%',
                     border: 'none',
                     overflow: 'hidden'
                   }}
                   scrolling="no"
-                  id="bkksPA6IoIp9x17xTFZB_1763750405522"
+                  id="bkksPA6IoIp9x17xTFZB_1770571203782"
                 />
               </div>
             </div>
