@@ -11,6 +11,7 @@ import Footer from "@/components/Footer"
 
 export default function BookPage() {
   const [isBooked, setIsBooked] = useState(false)
+  const [showCalendar, setShowCalendar] = useState(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function BookPage() {
             eventName === 'booking.scheduled' ||
             eventName === 'appointment.scheduled') {
           console.log('Booking confirmed! Redirecting...')
+          setShowCalendar(false)
           setIsBooked(true)
           // Automatically redirect to thank you page after 1.5 seconds
           setTimeout(() => {
@@ -53,6 +55,20 @@ export default function BookPage() {
       window.removeEventListener('message', handleBookingSubmit)
     }
   }, [router])
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setShowCalendar(false)
+    }
+    if (showCalendar) {
+      document.body.style.overflow = 'hidden'
+      window.addEventListener('keydown', handleEscape)
+    }
+    return () => {
+      document.body.style.overflow = ''
+      window.removeEventListener('keydown', handleEscape)
+    }
+  }, [showCalendar])
 
   return (
     <>
@@ -92,46 +108,82 @@ export default function BookPage() {
               Approved To Book Your Vetting Call
             </h1>
             <p 
-              className="text-2xl md:text-3xl"
+              className="text-2xl md:text-3xl mb-10"
               style={{ 
                 fontFamily: 'Awesome Serif',
                 fontStyle: 'italic',
                 color: '#b38d38'
               }}
             >
-              Hang tight — your scheduling options are loading below
+              Click below to choose your time
             </p>
-          </motion.div>
-
-          {/* Calendar Embed */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-[936px] mx-auto"
-          >
-            <div 
-              className="backdrop-blur-xl rounded-2xl overflow-hidden"
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              onClick={() => setShowCalendar(true)}
+              className="px-10 py-4 rounded-xl font-semibold text-lg transition-all hover:scale-105 hover:shadow-xl"
               style={{
-                background: 'rgba(179, 141, 56, 0.08)',
-                border: '1px solid rgba(179, 141, 56, 0.2)',
-                boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.37), inset 0 1px 1px 0 rgba(179, 141, 56, 0.15)'
+                background: 'linear-gradient(135deg, #b38d38 0%, #d4af37 50%, #b38d38 100%)',
+                color: '#0c0a05',
+                boxShadow: '0 4px 20px rgba(179, 141, 56, 0.4)'
               }}
             >
-              <div className="p-4 md:p-8">
-                <iframe 
-                  src="https://links.cliniclaunchacademy.com/widget/booking/bkksPA6IoIp9x17xTFZB" 
-                  style={{ 
-                    width: '100%',
-                    border: 'none',
-                    overflow: 'hidden'
-                  }}
-                  scrolling="no"
-                  id="bkksPA6IoIp9x17xTFZB_1770571203782"
-                />
-              </div>
-            </div>
+              Open Calendar
+            </motion.button>
           </motion.div>
+
+          {/* Calendar Popup Modal */}
+          <AnimatePresence>
+            {showCalendar && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-50 flex items-center justify-center p-4"
+                onClick={() => setShowCalendar(false)}
+              >
+                <div className="absolute inset-0 bg-black/80 backdrop-blur-sm" />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                  className="relative w-full max-w-[936px] max-h-[90vh] rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(12, 10, 5, 0.98)',
+                    border: '1px solid rgba(179, 141, 56, 0.3)',
+                    boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="flex items-center justify-between p-4 border-b border-[#544629]">
+                    <h2 className="text-xl font-semibold text-white">Book Your Vetting Call</h2>
+                    <button
+                      onClick={() => setShowCalendar(false)}
+                      className="text-white/70 hover:text-white text-2xl leading-none p-1"
+                      aria-label="Close"
+                    >
+                      ×
+                    </button>
+                  </div>
+                  <div className="p-4 md:p-8 overflow-auto max-h-[calc(90vh-80px)]">
+                    <iframe 
+                      src="https://links.cliniclaunchacademy.com/widget/booking/bkksPA6IoIp9x17xTFZB" 
+                      style={{ 
+                        width: '100%',
+                        minHeight: '600px',
+                        border: 'none',
+                        overflow: 'hidden'
+                      }}
+                      scrolling="no"
+                      id="bkksPA6IoIp9x17xTFZB_1770571203782"
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Booking Confirmation Section - Appears briefly before redirect */}
           <AnimatePresence>
