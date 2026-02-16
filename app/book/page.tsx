@@ -59,7 +59,7 @@ export default function BookPage() {
       <Script 
         src="https://links.cliniclaunchacademy.com/js/form_embed.js" 
         type="text/javascript"
-        strategy="lazyOnload"
+        strategy="afterInteractive"
       />
       
       <main style={{ backgroundColor: '#0c0a05' }}>
@@ -123,11 +123,10 @@ export default function BookPage() {
                   src="https://links.cliniclaunchacademy.com/widget/booking/Yg9iJCiWU8zQjI8FtyXV" 
                   style={{ 
                     width: '100%',
-                    minHeight: '900px',
+                    minHeight: '700px',
+                    height: '100%',
                     border: 'none',
-                    overflow: 'hidden'
                   }}
-                  scrolling="no"
                   id="Yg9iJCiWU8zQjI8FtyXV_1771057620195"
                 />
               </div>
